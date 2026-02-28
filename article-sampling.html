@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sampling 101 | Littletree</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="index.html#home" class="logo">Littletree.</a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li class="dropdown">
+                    <a href="projects.html">Projects</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="projects.html#data">Data Projects</a></li>
+                        <li><a href="projects.html#coding">Coding Projects</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="articles.html">บทความ</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="articles.html#data">Data Articles</a></li>
+                        <li><a href="articles.html#coding">Coding Articles</a></li>
+                        <li><a href="articles.html#til">อันนี้เพิ่งรู้</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section style="padding-top: 9rem; padding-bottom: 5rem;">
+            <div class="container">
+                <a href="articles.html" class="back-link">&larr; Back to Articles</a>
+                <div class="tags" style="margin-top: 2rem;">
+                    <span>Sampling</span>
+                    <span>Statistics</span>
+                </div>
+                <h1 class="name" style="margin-top: 1rem; font-size: 2.8rem; line-height: 1.2;">Sampling 101</h1>
+                <p style="margin-top: 1rem; color: #888276; font-size: 0.9rem;">28 กุมภาพันธ์ 2026 · อ่านประมาณ 5 นาที
+                </p>
+
+                <div class="project-content" style="margin-top: 3rem;">
+
+                    <h2 class="section-title" style="font-size: 1.4rem;">Sampling คืออะไร?</h2>
+                    <p>
+                        ในงานวิเคราะห์ข้อมูลจริง เราแทบไม่เคยเก็บข้อมูลได้ครบทุกคนในจักรวาล (Population)
+                        แต่เราเลือกเก็บ <strong>ตัวอย่าง (Sample)</strong> มาแทน แล้วนำมาอนุมาน (Infer) ถึงภาพรวมของ
+                        Population
+                        ความแม่นยำของการวิเคราะห์จึงขึ้นอยู่กับคุณภาพของการสุ่มตัวอย่างเป็นอย่างมากครับ
+                    </p>
+
+                    <h2 class="section-title" style="font-size: 1.4rem; margin-top: 3rem;">วิธีการสุ่มตัวอย่างแบบต่างๆ
+                    </h2>
+                    <p>มีหลายวิธีที่ใช้กันทั่วไป แต่ละวิธีเหมาะกับสถานการณ์ต่างกัน:</p>
+                    <ul class="feature-list">
+                        <li>
+                            <strong>Simple Random Sampling (การสุ่มแบบง่าย):</strong>
+                            สุ่มตัวอย่างโดยที่ทุกคนมีโอกาสถูกเลือกเท่าเทียมกัน เหมาะเมื่อ Population
+                            มีความเป็นเนื้อเดียวกัน
+                        </li>
+                        <li>
+                            <strong>Systematic Sampling (การสุ่มแบบระบบ):</strong>
+                            เลือกทุก k คน เช่น ทุกลำดับที่ 10 จากรายชื่อ ง่ายต่อการปฏิบัติในภาคสนาม
+                        </li>
+                        <li>
+                            <strong>Stratified Sampling (การสุ่มแบบแบ่งชั้น):</strong>
+                            แบ่ง Population ออกเป็นกลุ่ม (Strata) ก่อน แล้วสุ่มจากแต่ละกลุ่ม
+                            ช่วยให้ตัวแทนครบทุกกลุ่มย่อย
+                        </li>
+                        <li>
+                            <strong>Cluster Sampling (การสุ่มแบบกลุ่ม):</strong>
+                            สุ่มเลือกกลุ่ม (Cluster) แล้วเก็บข้อมูลทุกคนในกลุ่มนั้น ประหยัดเวลาและค่าใช้จ่าย
+                        </li>
+                        <li>
+                            <strong>Convenience Sampling (การสุ่มตามความสะดวก):</strong>
+                            เลือกตัวอย่างที่เข้าถึงได้ง่ายที่สุด ระวัง! มีความเสี่ยง Bias สูงมาก
+                        </li>
+                    </ul>
+
+                    <h2 class="section-title" style="font-size: 1.4rem; margin-top: 3rem;">Sampling Bias — ศัตรูของ Data
+                    </h2>
+                    <p>
+                        Sampling Bias เกิดขึ้นเมื่อกลุ่มตัวอย่างไม่ได้แทนภาพรวมของ Population อย่างแท้จริง
+                        ผลที่ได้จะผิดเพี้ยนและนำไปสู่การตัดสินใจที่ผิดพลาด ตัวอย่างที่โด่งดังคือ:
+                    </p>
+                    <ul class="feature-list">
+                        <li>
+                            <strong>Survivorship Bias:</strong>
+                            เราเห็นเฉพาะ "ผู้รอดชีวิต" เช่น เรื่องราวความสำเร็จของ Startup ที่โด่งดัง
+                            แต่ไม่เห็น Startup ที่ล้มเหลวนับพัน ทำให้เข้าใจผิดว่าการทำธุรกิจง่ายกว่าความเป็นจริง
+                        </li>
+                        <li>
+                            <strong>Selection Bias:</strong>
+                            กระบวนการเลือกตัวอย่างทำให้บางกลุ่มมีโอกาสถูกเลือกมากหรือน้อยกว่าความเป็นจริง
+                        </li>
+                        <li>
+                            <strong>Voluntary Response Bias:</strong>
+                            คนที่ตอบแบบสอบถามสมัครใจมักมีความคิดเห็นที่รุนแรง (ชอบหรือเกลียดมาก)
+                            ทำให้ผลสำรวจไม่ตรงกับความคิดเห็นส่วนใหญ่
+                        </li>
+                    </ul>
+
+                    <h2 class="section-title" style="font-size: 1.4rem; margin-top: 3rem;">Sample Size สำคัญแค่ไหน?</h2>
+                    <p>
+                        Sample ที่ใหญ่ขึ้นช่วยลด Margin of Error และทำให้ผลการวิเคราะห์น่าเชื่อถือขึ้น
+                        แต่ก็ไม่ได้หมายความว่ายิ่งมากยิ่งดีเสมอไป — ถ้า Sample มี Bias อยู่ตั้งต้น
+                        การเพิ่มขนาดก็ยิ่งทำให้ผลผิดพลาดมากขึ้น การออกแบบวิธีสุ่มที่ดีจึงสำคัญกว่าขนาด Sample เสมอครับ
+                    </p>
+
+                    <p
+                        style="margin-top: 2rem; border-left: 3px solid var(--secondary-color); padding-left: 1.2rem; color: #5c554b;">
+                        💡 หลักการง่ายๆ: <strong>"A small, well-designed sample beats a large biased one."</strong>
+                        การสุ่มที่ดีคือรากฐานที่แข็งแกร่งของทุก Analysis ครับ
+                    </p>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Napat Kittiwat.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

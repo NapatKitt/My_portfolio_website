@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro to Python | Littletree</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="index.html#home" class="logo">Littletree.</a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li class="dropdown">
+                    <a href="projects.html">Projects</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="projects.html#data">Data Projects</a></li>
+                        <li><a href="projects.html#coding">Coding Projects</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="articles.html">บทความ</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="articles.html#data">Data Articles</a></li>
+                        <li><a href="articles.html#coding">Coding Articles</a></li>
+                        <li><a href="articles.html#til">อันนี้เพิ่งรู้</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section style="padding-top: 9rem; padding-bottom: 5rem;">
+            <div class="container">
+                <a href="articles.html" class="back-link">&larr; Back to Articles</a>
+                <div class="tags" style="margin-top: 2rem;">
+                    <span>Python</span>
+                    <span>Programming</span>
+                </div>
+                <h1 class="name" style="margin-top: 1rem; font-size: 2.8rem; line-height: 1.2;">Intro to Python</h1>
+                <p style="margin-top: 1rem; color: #888276; font-size: 0.9rem;">28 กุมภาพันธ์ 2026 · อ่านประมาณ 6 นาที
+                </p>
+
+                <div class="project-content" style="margin-top: 3rem;">
+
+                    <h2 class="section-title" style="font-size: 1.4rem;">ทำไมต้อง Python?</h2>
+                    <p>
+                        Python คือภาษาโปรแกรมมิ่งที่ได้รับความนิยมสูงสุดในโลกปัจจุบัน ด้วย syntax ที่อ่านง่าย
+                        เรียนรู้เร็ว
+                        และ ecosystem ที่ครอบคลุมตั้งแต่ Web Development, Data Science ไปจนถึง Machine Learning
+                        Python จึงเป็นภาษาแรกที่แนะนำสำหรับผู้เริ่มต้นเขียนโค้ดครับ
+                    </p>
+
+                    <h2 class="section-title" style="font-size: 1.4rem; margin-top: 3rem;">ตัวแปรและชนิดข้อมูล
+                        (Variables &amp; Data Types)</h2>
+                    <p>การเก็บข้อมูลใน Python ทำได้ง่ายมาก ไม่ต้องประกาศชนิดตัวแปรล่วงหน้า:</p>
+                    <ul class="feature-list">
+                        <li><strong>int / float:</strong> ตัวเลข เช่น <code
+                                style="background:#e8e4dc; padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.88rem;">age = 25</code>
+                            หรือ <code
+                                style="background:#e8e4dc; padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.88rem;">price = 9.99</code>
+                        </li>
+                        <li><strong>str:</strong> ข้อความ เช่น <code
+                                style="background:#e8e4dc; padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.88rem;">name = "Napat"</code>
+                        </li>
+                        <li><strong>bool:</strong> ค่าความจริง <code
+                                style="background:#e8e4dc; padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.88rem;">True</code>
+                            หรือ <code
+                                style="background:#e8e4dc; padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.88rem;">False</code>
+                        </li>
+                        <li><strong>list / dict:</strong> โครงสร้างที่เก็บข้อมูลหลายค่า เช่น <code
+                                style="background:#e8e4dc; padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.88rem;">[1, 2, 3]</code>
+                            หรือ <code
+                                style="background:#e8e4dc; padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.88rem;">{"key": "value"}</code>
+                        </li>
+                    </ul>
+
+                    <h2 class="section-title" style="font-size: 1.4rem; margin-top: 3rem;">เงื่อนไขและการวนซ้ำ
+                        (Conditions &amp; Loops)</h2>
+                    <p>Python ใช้ indentation (การย่อหน้า) แทนวงเล็บปีกกาในการกำหนดขอบเขต code block:</p>
+                    <ul class="feature-list">
+                        <li><strong>if / elif / else:</strong> ใช้ตัดสินใจตามเงื่อนไข</li>
+                        <li><strong>for loop:</strong> วนซ้ำตาม list หรือ range เช่น <code
+                                style="background:#e8e4dc; padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.88rem;">for i in range(5):</code>
+                        </li>
+                        <li><strong>while loop:</strong> วนซ้ำจนกว่าเงื่อนไขจะเป็น False</li>
+                        <li><strong>break / continue:</strong> ออกจาก loop หรือข้ามรอบปัจจุบัน</li>
+                    </ul>
+
+                    <h2 class="section-title" style="font-size: 1.4rem; margin-top: 3rem;">ฟังก์ชัน (Functions)</h2>
+                    <p>ฟังก์ชันช่วยจัดระเบียบโค้ดและนำกลับมาใช้ซ้ำได้ สร้างด้วย keyword <code
+                            style="background:#e8e4dc; padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.88rem;">def</code>:
+                    </p>
+                    <ul class="feature-list">
+                        <li><strong>Parameters &amp; Arguments:</strong> รับข้อมูลเข้ามาประมวลผล</li>
+                        <li><strong>Return value:</strong> ส่งค่ากลับออกจากฟังก์ชัน</li>
+                        <li><strong>Default parameters:</strong> กำหนดค่า default ให้ parameter ได้เลย</li>
+                        <li><strong>Lambda:</strong> ฟังก์ชันสั้นๆ แบบ one-liner สำหรับงานเฉพาะกิจ</li>
+                    </ul>
+
+                    <h2 class="section-title" style="font-size: 1.4rem; margin-top: 3rem;">Libraries ที่ควรรู้จักต่อ
+                    </h2>
+                    <ul class="feature-list">
+                        <li><strong>pandas:</strong> จัดการและวิเคราะห์ข้อมูลในรูปแบบตาราง</li>
+                        <li><strong>NumPy:</strong> คำนวณทางคณิตศาสตร์และเมทริกซ์</li>
+                        <li><strong>matplotlib / seaborn:</strong> สร้างกราฟและ visualization</li>
+                        <li><strong>requests:</strong> ดึงข้อมูลจาก API ผ่าน HTTP</li>
+                    </ul>
+
+                    <p
+                        style="margin-top: 2rem; border-left: 3px solid var(--secondary-color); padding-left: 1.2rem; color: #5c554b;">
+                        💡 ฝึกเขียน Python ได้เลยบน <strong>Google Colab</strong> ไม่ต้องติดตั้งอะไรในเครื่อง
+                        เหมาะมากสำหรับผู้เริ่มต้นครับ
+                    </p>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Napat Kittiwat.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

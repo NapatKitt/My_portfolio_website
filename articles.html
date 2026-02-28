@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Articles | Littletree</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="index.html#home" class="logo">Littletree.</a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li class="dropdown">
+                    <a href="projects.html">Projects</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="projects.html#data">Data Projects</a></li>
+                        <li><a href="projects.html#coding">Coding Projects</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="articles.html">บทความ</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="articles.html#data">Data Articles</a></li>
+                        <li><a href="articles.html#coding">Coding Articles</a></li>
+                        <li><a href="articles.html#til">อันนี้เพิ่งรู้</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section style="padding-top: 8rem; padding-bottom: 1rem;">
+            <div style="max-width: 1100px; margin: 0 auto; padding: 0 1rem;">
+                <a href="index.html#articles" class="back-link">&larr; Back</a>
+            </div>
+        </section>
+
+        <!-- Data Articles -->
+        <section id="data" style="padding-top: 2rem; padding-bottom: 3rem;">
+            <div class="container">
+                <h2 class="section-title">Data Articles</h2>
+                <div class="project-grid" style="margin-top: 3rem;">
+
+                    <div class="project-card">
+                        <div class="project-info">
+                            <h3>Intro to Statistics</h3>
+                            <p>ปูพื้นฐานความเข้าใจเกี่ยวกับสถิติที่จำเป็น ตั้งแต่ค่ากลาง การวัดการกระจายตัว
+                                ไปจนถึงการทดสอบสมมติฐานเบื้องต้น เพื่อนำไปประยุกต์ใช้กับข้อมูลจริง</p>
+                            <div class="tags">
+                                <span>Statistics</span>
+                                <span>Data Science</span>
+                            </div>
+                            <a href="article-stats.html" class="project-link">Read Article &rarr;</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-info">
+                            <h3>Sampling 101</h3>
+                            <p>ทำความเข้าใจการสุ่มตัวอย่าง (Sampling) ตั้งแต่พื้นฐาน ครอบคลุมวิธีการสุ่มแบบต่างๆ
+                                และเหตุผลว่าทำไมการเลือกตัวอย่างที่ดีถึงเป็นรากฐานของการวิเคราะห์ข้อมูลที่เชื่อถือได้
+                            </p>
+                            <div class="tags">
+                                <span>Sampling</span>
+                                <span>Statistics</span>
+                            </div>
+                            <a href="article-sampling.html" class="project-link">Read Article &rarr;</a>
+                        </div>
+                    </div>
+
+
+                    <div class="project-card">
+                        <div class="project-info">
+                            <h3>Intro to SQL</h3>
+                            <p>เรียนรู้คำสั่ง SQL เบื้องต้น ตั้งแต่การดึงข้อมูล (SELECT) การเชื่อมข้อมูล (JOIN)
+                                จนถึงการสรุปผล (Aggregate) เพื่อเตรียมความพร้อมสู่การทำงานกับระบบฐานข้อมูล</p>
+                            <div class="tags">
+                                <span>SQL</span>
+                                <span>Database</span>
+                            </div>
+                            <a href="article-sql.html" class="project-link">Read Article &rarr;</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Coding Articles -->
+        <section id="coding"
+            style="padding-top: 2rem; padding-bottom: 3rem; border-top: 1px solid var(--border-color);">
+            <div class="container">
+                <h2 class="section-title" style="margin-top: 3rem;">Coding Articles</h2>
+                <div class="project-grid" style="margin-top: 3rem;">
+
+                    <div class="project-card">
+                        <div class="project-info">
+                            <h3>Intro to Python</h3>
+                            <p>เริ่มต้นเรียนรู้ภาษา Python ตั้งแต่พื้นฐาน ครอบคลุมตั้งแต่ตัวแปร เงื่อนไข ลูป
+                                ไปจนถึงฟังก์ชัน เพื่อเตรียมพร้อมสู่การเขียนโค้ดในโลกจริง</p>
+                            <div class="tags">
+                                <span>Python</span>
+                                <span>Programming</span>
+                            </div>
+                            <a href="article-python.html" class="project-link">Read Article &rarr;</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-info">
+                            <h3>R Programming 101</h3>
+                            <p>เรียนรู้ภาษา R ตั้งแต่ต้น ตั้งแต่โครงสร้างข้อมูลพื้นฐาน การจัดการ Data Frame
+                                ไปจนถึงการสร้าง visualization ด้วย ggplot2 สำหรับงานด้าน Data Analysis</p>
+                            <div class="tags">
+                                <span>R</span>
+                                <span>Data Analysis</span>
+                            </div>
+                            <a href="article-r.html" class="project-link">Read Article &rarr;</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- อันนี้เพิ่งรู้ -->
+        <section id="til" style="padding-top: 2rem; padding-bottom: 5rem; border-top: 1px solid var(--border-color);">
+            <div class="container">
+                <h2 class="section-title" style="margin-top: 3rem;">อันนี้เพิ่งรู้</h2>
+                <p style="color: #888276; margin-bottom: 3rem; font-size: 0.95rem;">สิ่งที่เรียนรู้ใหม่ทุกวัน
+                    ไม่ว่าจะเป็นเรื่องเล็กหรือใหญ่ — ขอบันทึกไว้ครับ</p>
+                <div class="project-grid">
+
+                    <div class="project-card">
+                        <div class="project-info">
+                            <h3>ความสำคัญของ Behavioral Science</h3>
+                            <p>ทำความเข้าใจพฤติกรรมและการตัดสินใจของมนุษย์ผ่านหลักวิชาพฤติกรรมศาสตร์
+                                เพื่อนำไปต่อยอดในการออกแบบประสบการณ์ผู้ใช้งาน (UX)
+                                และวิเคราะห์ข้อมูลให้เกิดประสิทธิผลสูงสุด</p>
+                            <div class="tags">
+                                <span>Behavioral Science</span>
+                                <span>UX/UI</span>
+                            </div>
+                            <a href="article-behavioral.html" class="project-link">Read Article &rarr;</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Napat Kittiwat.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

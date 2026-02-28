@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL พื้นฐาน | Littletree</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="index.html#home" class="logo">Littletree.</a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li class="dropdown">
+                    <a href="projects.html">Projects</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="projects.html#data">Data Projects</a></li>
+                        <li><a href="projects.html#coding">Coding Projects</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="articles.html">บทความ</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="articles.html#data">Data Articles</a></li>
+                        <li><a href="articles.html#coding">Coding Articles</a></li>
+                        <li><a href="articles.html#til">อันนี้เพิ่งรู้</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section style="padding-top: 9rem; padding-bottom: 5rem;">
+            <div class="container">
+                <a href="articles.html" class="back-link">&larr; Back to Articles</a>
+                <div class="tags" style="margin-top: 2rem;">
+                    <span>SQL</span>
+                    <span>Database</span>
+                </div>
+                <h1 class="name" style="margin-top: 1rem; font-size: 2.8rem; line-height: 1.2;">Intro to SQL</h1>
+                <p style="margin-top: 1rem; color: #888276; font-size: 0.9rem;">28 กุมภาพันธ์ 2026 · อ่านประมาณ 6 นาที
+                </p>
+
+                <div class="project-content" style="margin-top: 3rem;">
+
+                    <h2 class="section-title" style="font-size: 1.4rem;">SQL คืออะไร?</h2>
+                    <p>
+                        SQL (Structured Query Language) คือภาษาที่ใช้สื่อสารกับฐานข้อมูลเชิงสัมพันธ์ (Relational
+                        Database)
+                        ไม่ว่าจะเป็น MySQL, PostgreSQL, SQLite หรือ SQL Server ก็ใช้ภาษา SQL เป็นหลักทั้งนั้นครับ
+                        ถ้าคุณทำงานด้าน Data หรือ Backend การรู้จัก SQL ถือเป็น skill ที่จำเป็นมากๆ
+                    </p>
+
+                    <h2 class="section-title" style="font-size: 1.4rem; margin-top: 3rem;">SELECT — ดึงข้อมูล</h2>
+                    <p>คำสั่งพื้นฐานที่สุดคือ SELECT ใช้สำหรับดึงข้อมูลจากตาราง:</p>
+                    <ul class="feature-list">
+                        <li><strong>SELECT * FROM users;</strong> — ดึงทุกคอลัมน์จากตาราง users</li>
+                        <li><strong>SELECT name, email FROM users;</strong> — ดึงเฉพาะคอลัมน์ที่ต้องการ</li>
+                        <li><strong>SELECT * FROM users WHERE age &gt; 25;</strong> — ดึงเฉพาะแถวที่ตรงเงื่อนไข</li>
+                        <li><strong>SELECT * FROM users ORDER BY name ASC;</strong> — จัดเรียงผลลัพธ์</li>
+                    </ul>
+
+                    <h2 class="section-title" style="font-size: 1.4rem; margin-top: 3rem;">JOIN —
+                        เชื่อมข้อมูลจากหลายตาราง</h2>
+                    <p>เมื่อข้อมูลอยู่คนละตาราง เราใช้ JOIN เพื่อรวมข้อมูลเข้าด้วยกัน:</p>
+                    <ul class="feature-list">
+                        <li><strong>INNER JOIN:</strong> ดึงเฉพาะแถวที่มีข้อมูลตรงกันในทั้งสองตาราง</li>
+                        <li><strong>LEFT JOIN:</strong> ดึงแถวทั้งหมดจากตารางซ้าย แม้ไม่มีข้อมูลตรงกันในตารางขวา</li>
+                        <li><strong>RIGHT JOIN:</strong> ดึงแถวทั้งหมดจากตารางขวา</li>
+                        <li><strong>FULL OUTER JOIN:</strong> ดึงทุกแถวจากทั้งสองตาราง</li>
+                    </ul>
+
+                    <h2 class="section-title" style="font-size: 1.4rem; margin-top: 3rem;">Aggregate Functions — สรุปผล
+                    </h2>
+                    <p>ใช้รวมข้อมูลหลายแถวให้เป็นค่าสรุปเดียว มักใช้คู่กับ GROUP BY:</p>
+                    <ul class="feature-list">
+                        <li><strong>COUNT(*):</strong> นับจำนวนแถว</li>
+                        <li><strong>SUM(column):</strong> รวมค่าในคอลัมน์</li>
+                        <li><strong>AVG(column):</strong> ค่าเฉลี่ย</li>
+                        <li><strong>MAX / MIN:</strong> ค่าสูงสุด / ต่ำสุด</li>
+                    </ul>
+
+                    <p
+                        style="margin-top: 2rem; border-left: 3px solid var(--secondary-color); padding-left: 1.2rem; color: #5c554b;">
+                        ลองฝึกเขียน SQL ด้วยเครื่องมือออนไลน์อย่าง <strong>SQLiteOnline.com</strong> หรือลง PostgreSQL
+                        บนเครื่องตัวเองเพื่อเรียนรู้แบบ hands-on ได้เลยครับ
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Napat Kittiwat.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

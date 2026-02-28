@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R Programming 101 | Littletree</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="index.html#home" class="logo">Littletree.</a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li class="dropdown">
+                    <a href="projects.html">Projects</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="projects.html#data">Data Projects</a></li>
+                        <li><a href="projects.html#coding">Coding Projects</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="articles.html">บทความ</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="articles.html#data">Data Articles</a></li>
+                        <li><a href="articles.html#coding">Coding Articles</a></li>
+                        <li><a href="articles.html#til">อันนี้เพิ่งรู้</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section style="padding-top: 9rem; padding-bottom: 5rem;">
+            <div class="container">
+                <a href="articles.html" class="back-link">&larr; Back to Articles</a>
+                <div class="tags" style="margin-top: 2rem;">
+                    <span>R</span>
+                    <span>Data Analysis</span>
+                </div>
+                <h1 class="name" style="margin-top: 1rem; font-size: 2.8rem; line-height: 1.2;">R Programming 101</h1>
+                <p style="margin-top: 1rem; color: #888276; font-size: 0.9rem;">28 กุมภาพันธ์ 2026 · อ่านประมาณ 6 นาที
+                </p>
+
+                <div class="project-content" style="margin-top: 3rem;">
+
+                    <h2 class="section-title" style="font-size: 1.4rem;">ทำไมต้อง R?</h2>
+                    <p>
+                        R เป็นภาษาโปรแกรมมิ่งที่ถูกออกแบบมาเพื่องาน Statistical Computing และ Data Analysis โดยเฉพาะ
+                        แม้ว่า Python จะได้รับความนิยมมากกว่าในปัจจุบัน แต่ R ยังคงเป็นที่นิยมสูงมากในวงการวิชาการ
+                        งานวิจัย และสายงาน Biostatistics เพราะมี packages สำหรับการวิเคราะห์ทางสถิติที่ครบครันมากครับ
+                    </p>
+
+                    <h2 class="section-title" style="font-size: 1.4rem; margin-top: 3rem;">โครงสร้างข้อมูลพื้นฐาน</h2>
+                    <p>R มีโครงสร้างข้อมูลหลักที่ต้องรู้จัก:</p>
+                    <ul class="feature-list">
+                        <li>
+                            <strong>Vector:</strong>
+                            โครงสร้างพื้นฐานที่สุดใน R เก็บข้อมูล 1 มิติที่เป็นชนิดเดียวกัน เช่น
+                            <code
+                                style="background:#e8e4dc; padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.88rem;">c(1, 2, 3, 4)</code>
+                            หรือ
+                            <code
+                                style="background:#e8e4dc; padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.88rem;">c("a", "b", "c")</code>
+                        </li>
+                        <li>
+                            <strong>Data Frame:</strong>
+                            โครงสร้างที่คล้าย spreadsheet มีแถวและคอลัมน์ คล้ายกับ DataFrame ของ pandas ใน Python
+                            เป็น structure ที่ใช้งานมากที่สุดในงาน Data Analysis
+                        </li>
+                        <li>
+                            <strong>List:</strong>
+                            เก็บข้อมูลหลายชนิดผสมกันได้ในโครงสร้างเดียว แตกต่างจาก Vector ที่ต้องเป็นชนิดเดียวกัน
+                        </li>
+                        <li>
+                            <strong>Matrix:</strong>
+                            Vector 2 มิติ ใช้สำหรับการคำนวณทางคณิตศาสตร์และ Linear Algebra
+                        </li>
+                    </ul>
+
+                    <h2 class="section-title" style="font-size: 1.4rem; margin-top: 3rem;">การจัดการข้อมูลด้วย tidyverse
+                    </h2>
+                    <p>
+                        <strong>tidyverse</strong> คือชุด packages ที่ทำให้การจัดการและวิเคราะห์ข้อมูลใน R
+                        เป็นเรื่องง่าย
+                        ออกแบบมาให้ทำงานร่วมกัน มีแนวคิดที่ consistent และอ่านโค้ดได้ง่ายมาก:
+                    </p>
+                    <ul class="feature-list">
+                        <li>
+                            <strong>dplyr:</strong>
+                            จัดการ Data Frame ด้วย verb ที่ชัดเจน เช่น
+                            <code
+                                style="background:#e8e4dc; padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.88rem;">filter()</code>,
+                            <code
+                                style="background:#e8e4dc; padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.88rem;">select()</code>,
+                            <code
+                                style="background:#e8e4dc; padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.88rem;">mutate()</code>,
+                            <code
+                                style="background:#e8e4dc; padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.88rem;">summarise()</code>
+                        </li>
+                        <li>
+                            <strong>tidyr:</strong>
+                            จัดรูปแบบข้อมูลจาก wide เป็น long หรือกลับกัน ด้วย
+                            <code
+                                style="background:#e8e4dc; padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.88rem;">pivot_longer()</code>
+                            และ
+                            <code
+                                style="background:#e8e4dc; padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.88rem;">pivot_wider()</code>
+                        </li>
+                        <li>
+                            <strong>readr:</strong>
+                            อ่านไฟล์ข้อมูลเช่น CSV ได้เร็วและสะดวกกว่า built-in functions ปกติ
+                        </li>
+                        <li>
+                            <strong>Pipe operator (<code
+                                    style="background:#e8e4dc; padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.88rem;">|&gt;</code>):</strong>
+                            ส่งผลลัพธ์จาก step หนึ่งไปยัง step ถัดไป ทำให้โค้ดอ่านง่ายและเขียนได้ลื่นขึ้นมาก
+                        </li>
+                    </ul>
+
+                    <h2 class="section-title" style="font-size: 1.4rem; margin-top: 3rem;">Visualization ด้วย ggplot2
+                    </h2>
+                    <p>
+                        <strong>ggplot2</strong> เป็น package สำหรับสร้างกราฟที่สวยงามและยืดหยุ่นมาก
+                        อิงตามแนวคิด Grammar of Graphics ที่แบ่งกราฟออกเป็น "layer" ซ้อนกัน:
+                    </p>
+                    <ul class="feature-list">
+                        <li><strong>Data:</strong> ข้อมูลที่ใช้สร้างกราฟ</li>
+                        <li><strong>Aesthetics (aes):</strong> mapping ว่าตัวแปรไหน → แกน x, แกน y, สี, ขนาด</li>
+                        <li><strong>Geoms:</strong> รูปแบบกราฟ เช่น
+                            <code
+                                style="background:#e8e4dc; padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.88rem;">geom_point()</code>,
+                            <code
+                                style="background:#e8e4dc; padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.88rem;">geom_bar()</code>,
+                            <code
+                                style="background:#e8e4dc; padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.88rem;">geom_line()</code>,
+                            <code
+                                style="background:#e8e4dc; padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.88rem;">geom_histogram()</code>
+                        </li>
+                        <li><strong>Facets:</strong> แบ่งกราฟเป็น panel ย่อยตามกลุ่มข้อมูลได้ง่ายมาก</li>
+                        <li><strong>Themes:</strong> ปรับสไตล์กราฟได้ครบ ตั้งแต่สีพื้นหลัง ฟอนต์ gridlines</li>
+                    </ul>
+
+                    <p
+                        style="margin-top: 2rem; border-left: 3px solid var(--secondary-color); padding-left: 1.2rem; color: #5c554b;">
+                        💡 แนะนำให้เริ่มต้นด้วย <strong>RStudio</strong> ซึ่งเป็น IDE ที่ดีที่สุดสำหรับ R
+                        และเรียนควบคู่กับ <strong>R for Data Science</strong> (หนังสือออนไลน์ฟรี) ได้เลยครับ
+                    </p>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Napat Kittiwat.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

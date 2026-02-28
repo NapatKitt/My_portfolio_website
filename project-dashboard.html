@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Dashboard Web App | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="index.html#home" class="logo">Littletree.</a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li class="dropdown">
+                    <a href="projects.html">Projects</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="projects.html#data">Data Projects</a></li>
+                        <li><a href="projects.html#coding">Coding Projects</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="articles.html">บทความ</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="articles.html#data">Data Articles</a></li>
+                        <li><a href="articles.html#coding">Coding Articles</a></li>
+                        <li><a href="articles.html#til">อันนี้เพิ่งรู้</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="project-detail hero" style="min-height: auto; padding-top: 10rem; padding-bottom: 4rem;">
+            <div class="container">
+                <a href="index.html#projects" class="back-link">&larr; Back to Projects</a>
+                <h1 class="name" style="margin-top: 2rem; font-size: 3rem;">Data Dashboard Web App</h1>
+                <div class="tags" style="margin-bottom: 2rem;">
+                    <span>Python</span>
+                    <span>React</span>
+                    <span>SQL</span>
+                </div>
+                <div class="project-content">
+                    <p class="summary" style="max-width: 100%;">
+                        แอปพลิเคชันสำหรับวิเคราะห์และแสดงผลข้อมูลยอดขายแบบเรียลไทม์
+                        ดึงข้อมูลจากฐานข้อมูลมาแสดงในรูปแบบกราฟที่สวยงาม
+                        ช่วยให้การตัดสินใจทางธุรกิจมีความแม่นยำและรวดเร็วมากยิ่งขึ้น
+                    </p>
+
+                    <h2 class="section-title" style="margin-top: 3rem; font-size: 1.5rem;">Key Features</h2>
+                    <ul class="feature-list">
+                        <li><strong>Real-time Data Visualization:</strong>
+                            อัปเดตข้อมูลอัตโนมัติแบบเรียลไทม์เพื่อให้ผู้ใช้งานเห็นข้อมูลล่าสุดเสมอ</li>
+                        <li><strong>Interactive Dashboard:</strong> ผู้ใช้สามารถโต้ตอบกับกราฟ ดูรายละเอียดเชิงลึก
+                            (Drill-down) ได้สะดวก</li>
+                        <li><strong>Export System:</strong> รองรับการส่งออกรายงานเป็นไฟล์ PDF และ Excel ได้ทันที</li>
+                        <li><strong>Secure Access:</strong>
+                            ระบบจัดการสิทธิ์การเข้าถึงข้อมูลที่มีความปลอดภัยสูงระดับองค์กร</li>
+                    </ul>
+
+                    <h2 class="section-title" style="margin-top: 3rem; font-size: 1.5rem;">Project Detail</h2>
+                    <p>
+                        โปรเจคนี้เริ่มต้นจากความต้องการของทีมบริหารที่ต้องการเห็นข้อมูลยอดขายแบบเรียลไทม์
+                        แทนการรอรายงานสรุปทุกสิ้นเดือน
+                        ผมจึงได้ออกแบบสถาปัตยกรรมระบบใหม่ทั้งหมดโดยใช้ <strong>Python</strong>
+                        เป็นหลังบ้านเชื่อมต่อกับฐานข้อมูล <strong>SQL</strong>
+                        และใช้ <strong>React</strong> ในการสร้างหน้า UI ที่โต้ตอบได้และสวยงาม
+                        ช่วยลดเวลาการทำรายงานลงจากเดิมเกือบ 80%
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Napat Kittiwat. Minimalist Earth Tone Design.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

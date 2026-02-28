@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สถิติพื้นฐาน | Littletree</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="index.html#home" class="logo">Littletree.</a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li class="dropdown">
+                    <a href="projects.html">Projects</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="projects.html#data">Data Projects</a></li>
+                        <li><a href="projects.html#coding">Coding Projects</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="articles.html">บทความ</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="articles.html#data">Data Articles</a></li>
+                        <li><a href="articles.html#coding">Coding Articles</a></li>
+                        <li><a href="articles.html#til">อันนี้เพิ่งรู้</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section style="padding-top: 9rem; padding-bottom: 5rem;">
+            <div class="container">
+                <a href="articles.html" class="back-link">&larr; Back to Articles</a>
+                <div class="tags" style="margin-top: 2rem;">
+                    <span>Statistics</span>
+                    <span>Data Science</span>
+                </div>
+                <h1 class="name" style="margin-top: 1rem; font-size: 2.8rem; line-height: 1.2;">
+                    Intro to Statistics</h1>
+                <p style="margin-top: 1rem; color: #888276; font-size: 0.9rem;">28 กุมภาพันธ์ 2026 · อ่านประมาณ 5 นาที
+                </p>
+
+                <div class="project-content" style="margin-top: 3rem;">
+
+                    <h2 class="section-title" style="font-size: 1.4rem;">สถิติคืออะไร?</h2>
+                    <p>
+                        สถิติ (Statistics) คือศาสตร์ที่ว่าด้วยการเก็บรวบรวม จัดระเบียบ วิเคราะห์ และนำเสนอข้อมูล
+                        ไม่ว่าคุณจะทำงานด้าน Data Science, Business Analysis หรือ Machine Learning
+                        ความรู้ด้านสถิติพื้นฐานถือเป็นรากฐานสำคัญที่ขาดไม่ได้เลยครับ
+                    </p>
+
+                    <h2 class="section-title" style="font-size: 1.4rem; margin-top: 3rem;">ค่ากลาง (Measures of Central
+                        Tendency)</h2>
+                    <p>ค่ากลางคือตัวเลขที่บอกให้เราทราบว่าข้อมูลส่วนใหญ่อยู่แถวไหน โดยมี 3 ตัวที่ใช้บ่อยที่สุด:</p>
+                    <ul class="feature-list">
+                        <li><strong>ค่าเฉลี่ย (Mean):</strong> ผลรวมของข้อมูลทั้งหมดหารด้วยจำนวนข้อมูล
+                            ง่ายที่สุดแต่ไวต่อค่าผิดปกติ (Outliers)</li>
+                        <li><strong>ค่ากลาง (Median):</strong> ค่าที่อยู่ตรงกลางเมื่อเรียงข้อมูลจากน้อยไปมาก
+                            ใช้งานได้ดีกับข้อมูลที่มี Outliers</li>
+                        <li><strong>ฐานนิยม (Mode):</strong> ค่าที่ปรากฏบ่อยที่สุดในชุดข้อมูล เหมาะกับข้อมูลเชิงหมวดหมู่
+                            (Categorical)</li>
+                    </ul>
+
+                    <h2 class="section-title" style="font-size: 1.4rem; margin-top: 3rem;">การวัดการกระจายตัว (Measures
+                        of Spread)</h2>
+                    <p>นอกจากค่ากลาง เราก็ต้องรู้ว่าข้อมูลกระจายตัวมากน้อยแค่ไหนด้วย:</p>
+                    <ul class="feature-list">
+                        <li><strong>Range:</strong> ค่าสูงสุดลบค่าต่ำสุด บอกขนาดช่วงข้อมูลคร่าวๆ</li>
+                        <li><strong>Variance (ความแปรปรวน):</strong>
+                            วัดว่าข้อมูลแต่ละจุดอยู่ห่างจากค่าเฉลี่ยมากแค่ไหนโดยเฉลี่ย</li>
+                        <li><strong>Standard Deviation (ส่วนเบี่ยงเบนมาตรฐาน):</strong> รากที่สองของ Variance
+                            ตีความได้ง่ายกว่าเพราะมีหน่วยเดียวกับข้อมูล</li>
+                    </ul>
+
+                    <h2 class="section-title" style="font-size: 1.4rem; margin-top: 3rem;">การทดสอบสมมติฐาน (Hypothesis
+                        Testing)</h2>
+                    <p>
+                        เมื่อเราสังเกตเห็นความแตกต่างในข้อมูล คำถามที่ตามมาคือ: <em>"ความแตกต่างนี้เกิดจากความบังเอิญ
+                            หรือมีนัยสำคัญจริงๆ?"</em>
+                        การทดสอบสมมติฐานช่วยตอบคำถามนี้ โดยกำหนด:
+                    </p>
+                    <ul class="feature-list">
+                        <li><strong>H₀ (Null Hypothesis):</strong> สมมติฐานหลัก เช่น
+                            "ไม่มีความแตกต่างระหว่างทั้งสองกลุ่ม"</li>
+                        <li><strong>H₁ (Alternative Hypothesis):</strong> สมมติฐานทางเลือกที่เราต้องการพิสูจน์</li>
+                        <li><strong>p-value:</strong> ถ้า p-value น้อยกว่า 0.05 (หรือ Significance Level ที่ตั้งไว้)
+                            เราจะปฏิเสธ H₀ และยืนยันว่าผลที่เห็นมีนัยสำคัญทางสถิติ</li>
+                    </ul>
+
+                    <p
+                        style="margin-top: 2rem; border-left: 3px solid var(--secondary-color); padding-left: 1.2rem; color: #5c554b;">
+                        ความรู้ด้านสถิติเหล่านี้เป็นจุดเริ่มต้นที่ดีครับ ลองนำไปประยุกต์ใช้กับข้อมูลจริงๆ ใน Python ด้วย
+                        libraries อย่าง NumPy, SciPy หรือ pandas ได้เลย
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Napat Kittiwat.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
