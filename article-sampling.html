@@ -9,6 +9,122 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap"
         rel="stylesheet">
+    <style>
+        .article-img {
+            display: block;
+            max-width: 100%;
+            border-radius: 10px;
+            margin: 1.5rem auto;
+            box-shadow: 0 4px 18px rgba(59, 54, 47, 0.10);
+        }
+
+        .img-caption {
+            text-align: center;
+            color: #888276;
+            font-size: 0.85rem;
+            margin-top: -0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .note-box {
+            background: rgba(123, 136, 111, 0.08);
+            border-left: 3px solid var(--secondary-color);
+            border-radius: 0 8px 8px 0;
+            padding: 0.8rem 1.2rem;
+            margin: 1rem 0 1.5rem;
+            color: #5c554b;
+            font-size: 0.95rem;
+        }
+
+        .highlight-box {
+            background: rgba(123, 136, 111, 0.06);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .method-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .method-card {
+            background: rgba(250, 248, 244, 0.8);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1rem 1.2rem;
+        }
+
+        .method-card h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .method-card p {
+            font-size: 0.9rem;
+            color: #5c554b;
+            margin: 0;
+        }
+
+        .bias-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.15rem 0.6rem;
+            border-radius: 20px;
+            margin-bottom: 0.4rem;
+        }
+
+        .bias-high {
+            background: rgba(180, 80, 80, 0.12);
+            color: #a05050;
+        }
+
+        .bias-low {
+            background: rgba(80, 140, 80, 0.12);
+            color: #4a7a4a;
+        }
+
+        .formula-row {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+
+        .formula-box {
+            flex: 1;
+            min-width: 200px;
+            background: rgba(123, 136, 111, 0.06);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.9rem 1.1rem;
+            text-align: center;
+        }
+
+        .formula-box .arrow {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin: 0.3rem 0;
+        }
+
+        .section-divider {
+            border: none;
+            border-top: 1px solid var(--border-color);
+            margin: 2.5rem 0;
+        }
+
+        @media (max-width: 640px) {
+            .method-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -46,83 +162,307 @@
                 <div class="tags" style="margin-top: 2rem;">
                     <span>Sampling</span>
                     <span>Statistics</span>
+                    <span>Research Methods</span>
                 </div>
                 <h1 class="name" style="margin-top: 1rem; font-size: 2.8rem; line-height: 1.2;">Sampling 101</h1>
-                <p style="margin-top: 1rem; color: #888276; font-size: 0.9rem;">28 กุมภาพันธ์ 2026 · อ่านประมาณ 5 นาที
-                </p>
+                <p style="margin-top: 1rem; color: #888276; font-size: 0.9rem;">14 มีนาคม 2026 · อ่านประมาณ 8 นาที</p>
 
                 <div class="project-content" style="margin-top: 3rem;">
 
-                    <h2 class="section-title" style="font-size: 1.4rem;">Sampling คืออะไร?</h2>
-                    <p>
-                        ในงานวิเคราะห์ข้อมูลจริง เราแทบไม่เคยเก็บข้อมูลได้ครบทุกคนในจักรวาล (Population)
-                        แต่เราเลือกเก็บ <strong>ตัวอย่าง (Sample)</strong> มาแทน แล้วนำมาอนุมาน (Infer) ถึงภาพรวมของ
-                        Population
-                        ความแม่นยำของการวิเคราะห์จึงขึ้นอยู่กับคุณภาพของการสุ่มตัวอย่างเป็นอย่างมากครับ
-                    </p>
+                    <!-- SECTION 1: Probability Sampling -->
+                    <h2 class="section-title" style="font-size: 1.4rem;">Probability Sampling —
+                        การสุ่มแบบมีความน่าจะเป็น</h2>
+                    <p>กลุ่มวิธีการสุ่มที่ทุกคนใน Population มีโอกาสถูกเลือกอย่างที่กำหนดได้ ผลที่ได้จึงสามารถ represent
+                        ไปถึง population ได้</p>
 
-                    <h2 class="section-title" style="font-size: 1.4rem; margin-top: 3rem;">วิธีการสุ่มตัวอย่างแบบต่างๆ
-                    </h2>
-                    <p>มีหลายวิธีที่ใช้กันทั่วไป แต่ละวิธีเหมาะกับสถานการณ์ต่างกัน:</p>
+                    <!-- Simple Random Sampling -->
+                    <h3 style="font-size: 1.1rem; font-weight: 600; color: var(--text-color); margin: 2rem 0 0.6rem;">
+                        <mark
+                            style="background: rgba(200, 170, 90, 0.28); border-radius: 4px; padding: 0.05rem 0.45rem;">Simple
+                            Random Sampling</mark></h3>
+                    <p>จาก population ทั้งหมดจะมีโอกาสในการถูกสุ่มเท่ากันทุกคน ถ้า pop = 100 โอกาสที่จะถูกสุ่มก็คือ 0.01
+                        ตัวอย่างง่ายๆ ก็เช่น การซื้อหวย</p>
+                    <p>การทำ Simple random sampling จะทำได้ดีในระบบปิด ตัวอย่างเช่น ใน community ต่างๆ ที่มีสมาชิกชัดเจน
+                        หรือในบริษัท</p>
+
+                    <!-- Systematic Random Sampling -->
+                    <h3 style="font-size: 1.1rem; font-weight: 600; color: var(--text-color); margin: 2rem 0 0.6rem;">
+                        <mark
+                            style="background: rgba(200, 170, 90, 0.28); border-radius: 4px; padding: 0.05rem 0.45rem;">Systematic
+                            Random Sampling</mark></h3>
+                    <p>มีระบบหรือเงื่อนไขบางอย่างที่ช่วยในการสุ่มตัวอย่าง</p>
+                    <p>เริ่มจากการที่เราสุ่มข้อมูลที่เรามีก่อน จากนั้นเราจะเลือกคนแรกแล้วเว้น 2 คน แล้วค่อยเลือกคนถัดไป
+                        — แบบ 1 ข้าม 2 เหมือนเป็นการ set rule base ในการหา sample</p>
+
+                    <!-- Cluster Random Sampling -->
+                    <h3 style="font-size: 1.1rem; font-weight: 600; color: var(--text-color); margin: 2rem 0 0.6rem;">
+                        <mark
+                            style="background: rgba(200, 170, 90, 0.28); border-radius: 4px; padding: 0.05rem 0.45rem;">Cluster
+                            Random Sampling</mark></h3>
+                    <p>เริ่มจากการแบ่งข้อมูลออกเป็น 3 กลุ่ม แล้วเราจะสุ่มจากกลุ่ม ได้กลุ่มไหนเราก็จะเลือกกลุ่มนั้นมาเป็น
+                        sample เช่น เราแบ่งรายชื่อนักเรียนออกเป็น 3 กลุ่ม เราก็จะสุ่มกลุ่มนักเรียน 1 กลุ่ม</p>
                     <ul class="feature-list">
-                        <li>
-                            <strong>Simple Random Sampling (การสุ่มแบบง่าย):</strong>
-                            สุ่มตัวอย่างโดยที่ทุกคนมีโอกาสถูกเลือกเท่าเทียมกัน เหมาะเมื่อ Population
-                            มีความเป็นเนื้อเดียวกัน
-                        </li>
-                        <li>
-                            <strong>Systematic Sampling (การสุ่มแบบระบบ):</strong>
-                            เลือกทุก k คน เช่น ทุกลำดับที่ 10 จากรายชื่อ ง่ายต่อการปฏิบัติในภาคสนาม
-                        </li>
-                        <li>
-                            <strong>Stratified Sampling (การสุ่มแบบแบ่งชั้น):</strong>
-                            แบ่ง Population ออกเป็นกลุ่ม (Strata) ก่อน แล้วสุ่มจากแต่ละกลุ่ม
-                            ช่วยให้ตัวแทนครบทุกกลุ่มย่อย
-                        </li>
-                        <li>
-                            <strong>Cluster Sampling (การสุ่มแบบกลุ่ม):</strong>
-                            สุ่มเลือกกลุ่ม (Cluster) แล้วเก็บข้อมูลทุกคนในกลุ่มนั้น ประหยัดเวลาและค่าใช้จ่าย
-                        </li>
-                        <li>
-                            <strong>Convenience Sampling (การสุ่มตามความสะดวก):</strong>
-                            เลือกตัวอย่างที่เข้าถึงได้ง่ายที่สุด ระวัง! มีความเสี่ยง Bias สูงมาก
-                        </li>
+                        <li>แต่ละกลุ่ม (cluster) ควรจะมีจำนวนเท่ากัน</li>
+                        <li>การแบ่งกลุ่มทำได้หลายทาง ไม่ว่าจะเป็นการสุ่ม หรือการแบ่งจาก demographic บางอย่าง เช่น เพศ
+                            อายุ หรือแบ่งจาก character บางอย่าง (e.g. spending) หรือจะไม่แบ่งจากอะไรเลยก็ได้</li>
+                        <li>กระบวนการนี้จะเหมาะกับคนที่ไม่มีเวลา ฉะนั้นวิธีนี้ก็จะไม่ accurate เท่าไหร่</li>
                     </ul>
 
-                    <h2 class="section-title" style="font-size: 1.4rem; margin-top: 3rem;">Sampling Bias — ศัตรูของ Data
-                    </h2>
-                    <p>
-                        Sampling Bias เกิดขึ้นเมื่อกลุ่มตัวอย่างไม่ได้แทนภาพรวมของ Population อย่างแท้จริง
-                        ผลที่ได้จะผิดเพี้ยนและนำไปสู่การตัดสินใจที่ผิดพลาด ตัวอย่างที่โด่งดังคือ:
-                    </p>
+                    <!-- Stratified Random Sampling -->
+                    <h3 style="font-size: 1.1rem; font-weight: 600; color: var(--text-color); margin: 2rem 0 0.6rem;">
+                        <mark
+                            style="background: rgba(200, 170, 90, 0.28); border-radius: 4px; padding: 0.05rem 0.45rem;">Stratified
+                            Random Sampling</mark></h3>
+                    <p>เรียกว่าเป็น Market research 101 เลยก็ว่าได้</p>
+                    <p>ตัวอย่าง: เราอยากเก็บ sample 1,000 คน (n = 1,000) ในประเทศไทย</p>
                     <ul class="feature-list">
                         <li>
-                            <strong>Survivorship Bias:</strong>
-                            เราเห็นเฉพาะ "ผู้รอดชีวิต" เช่น เรื่องราวความสำเร็จของ Startup ที่โด่งดัง
-                            แต่ไม่เห็น Startup ที่ล้มเหลวนับพัน ทำให้เข้าใจผิดว่าการทำธุรกิจง่ายกว่าความเป็นจริง
+                            <strong>Step 1 — แบ่งตามภูมิภาค:</strong>
+                            เริ่มจากการแบ่งเป็นภาคๆ ก่อน เหนือ, อีสาน, ใต้, กลาง, กทม.
+                            ดูว่าแต่ละภาคมีสัดส่วนประชากรเท่าไหร่ โดยให้ทั้งประเทศ = 100%
+                            สมมติ เหนือ 10%, อีสาน 35%, กทม. 10%, กลาง 30% และใต้อีก 15%
                         </li>
                         <li>
-                            <strong>Selection Bias:</strong>
-                            กระบวนการเลือกตัวอย่างทำให้บางกลุ่มมีโอกาสถูกเลือกมากหรือน้อยกว่าความเป็นจริง
+                            <strong>Step 2 — สุ่มอำเภอ:</strong>
+                            ในแต่ละจังหวัดเราก็จะสุ่มอำเภอที่จะเอามาเป็นกลุ่มตัวอย่างอีกทีนึง
+                            โดยที่มันจะมีตารางตีช่อง grid จากแผนที่เลย จากนั้นก็จะสุ่ม block ที่เราจะไปเดินสัมภาษณ์
+                            และทุก block จะต้องมีโอกาสถูกสุ่มเท่ากัน
                         </li>
                         <li>
-                            <strong>Voluntary Response Bias:</strong>
-                            คนที่ตอบแบบสอบถามสมัครใจมักมีความคิดเห็นที่รุนแรง (ชอบหรือเกลียดมาก)
-                            ทำให้ผลสำรวจไม่ตรงกับความคิดเห็นส่วนใหญ่
+                            <strong>Step 3 — เลือกบ้าน (Left hand rule skip every 4 houses):</strong>
+                            สัมภาษณ์บ้านหลังแรก แล้วข้ามหลังที่ 2, 3, 4 แล้วค่อยไปสัมภาษณ์หลังที่ 5
+                            ทำแบบนี้ไปเรื่อยๆ ถ้าเจอแยกให้เลี้ยวซ้ายเสมอ (AKA เหมือนเป็นการทำ Systematic random
+                            sampling)
+                            ที่ต้องกำหนดให้เลี้ยวซ้ายเพราะมันจะได้ไม่มั่วเวลาเก็บข้อมูล
+                        </li>
+                        <li>
+                            <strong>กรณีไม่มีคนอยู่บ้าน:</strong>
+                            ถ้าหลังที่เราต้องสัมภาษณ์ไม่มีคนอยู่ เราจะทดไว้ก่อน
+                            แต่ถ้าไม่เจอเกิน 3 ครั้ง เราก็ต้องไปหาหลังใหม่ ไปหาคนใหม่มาแทนที่ที่มี profile คล้ายๆ กัน
                         </li>
                     </ul>
+                    <div class="note-box">
+                        � เราสามารถเอาทั้ง 3–4 วิธีมาใช้ร่วมกันได้ ตัวอย่างเช่น ในการแบ่งภาคเราใช้วิธี Stratified random
+                        sampling
+                        แต่พอมาถึงระดับหมู่บ้านหรืออำเภอ เราก็ไปใช้วิธี Systematic random sampling
+                    </div>
+                    <div class="note-box">
+                        �📝 ในชีวิตจริง ความจริงอันโหดร้าย — ลูกค้ามักจะจิ้มจังหวัดหรืออำเภอที่เล็งไว้อยู่แล้ว
+                        ไอที่เราคิดๆ มาหรือทำข้อมูลทางสถิติมามันไม่ได้ใช้ เพราะว่าแต่ละพื้นที่ก็จะมีแบรนด์ที่คนซื้อเยอะ
+                        เหมือนเป็นจังหวัดเก่งของแต่ละแบรนด์นั่นแหละ
+                    </div>
+                    <div class="note-box">
+                        📝 การทำ Census (สำมะโนประชากร) ก็นับเป็นการทำ Sample รูปแบบหนึ่ง
+                    </div>
 
-                    <h2 class="section-title" style="font-size: 1.4rem; margin-top: 3rem;">Sample Size สำคัญแค่ไหน?</h2>
+                    <hr class="section-divider">
+
+                    <!-- SECTION 2: Non-Probability Sampling -->
+                    <h2 class="section-title" style="font-size: 1.4rem;">Non-Probability Sampling —
+                        การสุ่มแบบไม่มีความน่าจะเป็น</h2>
+                    <p>ไม่ทุกคนมีโอกาสถูกเลือก ง่ายและรวดเร็วกว่า แต่มี Bias สูงกว่ามาก</p>
+
+                    <div class="method-grid">
+                        <div class="method-card">
+                            <span class="bias-tag bias-high">Bias สูง</span>
+                            <h4>Convenience Sampling (การสุ่มแบบสะดวก)</h4>
+                            <p>
+                                ตัวอย่างที่เจอบ่อยที่สุดคือการทำ survey ใน Google Form ส่งให้เพื่อน, แปะตามกลุ่มต่างๆ
+                                sample ที่ได้ไม่สามารถ represent ไปถึง population ได้เลย
+                                <br><br>
+                                ลองนึกภาพ ถ้าคนทำ survey อยู่โรงเรียนชายล้วน เพื่อนใน social media
+                                สัดส่วนผู้ชายก็ต้องมากกว่าผู้หญิง
+                                นั่นแหละทำให้ survey มี bias
+                            </p>
+                        </div>
+                        <div class="method-card">
+                            <span class="bias-tag bias-high">Bias สูงมาก</span>
+                            <h4>Snowball Sampling</h4>
+                            <p>
+                                เริ่มจากหาคนที่เกี่ยวข้องคนแรก แล้วถามว่ามีเพื่อนหรือคนรู้จักที่รู้เรื่องนี้ไหม
+                                แล้วถามต่อๆๆๆ ไปเรื่อยๆ
+                                <br><br>
+                                Bias เยอะแน่ๆ เพราะ sample ที่ได้มักคล้ายๆ เหมือนๆ กัน ความคิดเห็นไม่มีความหลากหลาย
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="note-box" style="background: rgba(180, 80, 80, 0.06); border-color: #c08080;">
+                        ⚠️ ทั้ง 2 วิธีนี้เอาไปทำงานจริงไม่ได้เลย ถ้าหากลุ่มตัวอย่างแบบนี้ในการทำงานจริงโดนลูกค้าด่าแน่
+                        ไม่คุ้มเงินที่ลูกค้าให้ และ bias เยอะอีก
+                    </div>
+                    <div class="note-box">
+                        📝 สุดท้ายแล้วเราจะเลือกใช้วิธีไหนเพื่อหา sample มันอยู่ที่ objective ด้วย ในบางสถานการณ์
+                        Snowball sampling ก็อาจจะจำเป็นต้องใช้ หรือบางสถานการณ์เราก็ใช้ prop-sampling
+                    </div>
+
+                    <hr class="section-divider">
+
+                    <!-- SECTION 3: Trade-off & Garbage in Garbage out -->
+                    <h2 class="section-title" style="font-size: 1.4rem;">Trade-off สำคัญมาก!!</h2>
                     <p>
-                        Sample ที่ใหญ่ขึ้นช่วยลด Margin of Error และทำให้ผลการวิเคราะห์น่าเชื่อถือขึ้น
-                        แต่ก็ไม่ได้หมายความว่ายิ่งมากยิ่งดีเสมอไป — ถ้า Sample มี Bias อยู่ตั้งต้น
-                        การเพิ่มขนาดก็ยิ่งทำให้ผลผิดพลาดมากขึ้น การออกแบบวิธีสุ่มที่ดีจึงสำคัญกว่าขนาด Sample เสมอครับ
+                        ยิ่ง sample size เราใกล้เคียงกับ population มากเท่าไหร่
+                        ผลลัพธ์ที่เราได้ก็จะแม่นยำมากขึ้นเท่านั้น
+                        แต่!!! ในการทำงานจริงๆ มันยากมาก ถ้าเราอยากได้ sample size ที่ใกล้เคียง pop
+                        เราก็ต้องแลกมากับเวลาในการเก็บข้อมูลเยอะมากๆ
                     </p>
+
+                    <div class="highlight-box" style="text-align:center;">
+                        <strong style="font-size: 1rem;">Trade-off: Time + Budget &nbsp;VS&nbsp; Value</strong>
+                        <p style="margin: 0.5rem 0 0; color: #888276; font-size: 0.9rem;">CPI = Cost per interview</p>
+                    </div>
+
+                    <!-- Garbage in Garbage out image -->
+                    <img src="images/sampling/page4_img1.png" alt="Garbage in, Garbage out" class="article-img"
+                        style="max-width: 380px; background: #1a1a1a; padding: 1rem; border-radius: 10px;">
+                    <p class="img-caption">Garbage in, Garbage out — ถ้า sample ไม่ดี ผลลัพธ์ก็ไม่ดีตามไปด้วย</p>
+
+                    <hr class="section-divider">
+
+                    <!-- SECTION 4: Sample Size 101 -->
+                    <h2 class="section-title" style="font-size: 1.4rem;">Sample Size 101</h2>
+                    <p>
+                        Sample size สำคัญมากๆ ถ้าข้อมูลหรือ sample size ที่เรามีมันถูกต้อง มีคุณภาพ
+                        ตัวเลขทางสถิติมันก็จะน่าเชื่อถือ กลับกันถ้า sample size ที่ได้มามันไม่มีคุณภาพ bias เยอะ
+                        แน่นอนว่าตัวเลขทางสถิติที่ออกมามันก็ไม่มีคุณภาพตาม
+                    </p>
+
+                    <div class="highlight-box">
+                        <strong>Basic concept:</strong> ยิ่ง sample size เยอะเท่าไหร่ มันก็จะยิ่ง represent ไปหา
+                        population ได้ดี
+                        <div style="margin-top: 0.8rem; color: #5c554b; font-size: 0.95rem;">
+                            N เยอะขึ้น → เข้าใกล้ population มากขึ้น → ผลลัพธ์ที่ได้ดีขึ้น
+                        </div>
+                    </div>
+
+                    <h3 style="font-size: 1.05rem; font-weight: 600; color: var(--text-color); margin: 2rem 0 0.8rem;">
+                        แล้วเราต้องเก็บเท่าไหร่ถึงจะพอ?</h3>
+                    <p>
+                        สมมติเรามีตัวอย่าง population = 1,000 | Confidence level = 95% | Margin of error = 10%
+                    </p>
+
+                    <div class="method-grid">
+                        <div class="method-card">
+                            <h4>Confidence 95% หมายความว่า</h4>
+                            <p>ถ้าเราทำการทดลองซ้ำ 100 ครั้ง จะมี 95 ครั้งที่ได้ผลลัพธ์เหมือนกัน</p>
+                        </div>
+                        <div class="method-card">
+                            <h4>Margin Error 10% หมายความว่า</h4>
+                            <p>ผลลัพธ์ที่ได้จะบวกลบ 10% จากผลจริง เช่น ได้ 70% จริงอาจอยู่ระหว่าง 60–80%</p>
+                        </div>
+                    </div>
+
+                    <h3 style="font-size: 1.05rem; font-weight: 600; color: var(--text-color); margin: 2rem 0 0.8rem;">
+                        ตัวอย่าง Lower Bound &amp; Upper Bound</h3>
+                    <p>
+                        สมมติทำ survey เรื่อง WFH โดยที่ n = 1,000 สุ่ม sample size ได้ 88 คน
+                        ผลสรุปออกมาว่าชอบ WFH 70% ของ 88 คน และไม่ชอบ WFH อีก 30%
+                    </p>
+                    <div class="formula-row">
+                        <div class="formula-box">
+                            <strong>Margin error 10%</strong>
+                            <div class="arrow">⇕</div>
+                            <span>60% — 80%</span>
+                            <div style="font-size: 0.82rem; color: #888276; margin-top: 0.3rem;">(Lower — Upper bound)
+                            </div>
+                        </div>
+                        <div class="formula-box">
+                            <strong>Margin error 5%</strong>
+                            <div class="arrow">⇕</div>
+                            <span>65% — 75%</span>
+                            <div style="font-size: 0.82rem; color: #888276; margin-top: 0.3rem;">แม่นยำขึ้น
+                                ต้องเก็บข้อมูลเพิ่ม</div>
+                        </div>
+                    </div>
+                    <p>ยิ่ง Margin error น้อย ก็จะยิ่งทำให้ผลลัพธ์เรา estimate ได้มากขึ้น</p>
+
+                    <!-- Graph: Margin Error vs Sample Size -->
+                    <img src="images/sampling/page5_img1.png" alt="กราฟ Margin Error vs Sample Size" class="article-img"
+                        style="max-width: 560px;">
+                    <p class="img-caption">กราฟ Margin Error vs. n(sample_size) — ยิ่ง sample size น้อย margin error
+                        ก็จะเยอะ</p>
+
+                    <hr class="section-divider">
+
+                    <!-- SECTION 5: Diminishing Return -->
+                    <h2 class="section-title" style="font-size: 1.4rem;">Margin Error | Sample Size | Confidence Level —
+                        ความสัมพันธ์ที่ต้องรู้</h2>
+                    <p>
+                        ช่วงแรกที่เราเก็บ sample size เพิ่มขึ้น margin error มันจะลดลงมาเยอะมาก แบบลดฮวบ
+                        แต่พอถึงจุดนึงการที่เราอยากจะลด error เราต้องเพิ่ม sample size เป็นเท่าตัวหรือสองเท่าตัวเลย
+                        เหมือน <strong>Diminishing Return</strong> เลย ทุกครั้งที่เราเพิ่ม sample size ทำให้เราลด error
+                        ได้ในอัตราที่ลดลงเรื่อยๆ
+                    </p>
+
+                    <!-- Graph: Diminishing Return -->
+                    <img src="images/sampling/page6_img1.png" alt="กราฟ Diminishing Return" class="article-img"
+                        style="max-width: 560px; background: #1a1a1a; padding: 0.5rem;">
+                    <p class="img-caption">Diminishing Return — ยิ่งลด ME จากจุดต่ำๆ ยิ่งต้องเพิ่ม n มากขึ้นเรื่อยๆ
+                        ไม่คุ้มค่า</p>
+
+                    <h3 style="font-size: 1.05rem; font-weight: 600; color: var(--text-color); margin: 2rem 0 0.8rem;">
+                        แล้วควรหยุดที่ตรงไหนถึงจะคุ้ม?</h3>
+                    <p>
+                        ส่วนใหญ่ค่า default จะอยู่ที่ <strong>5%</strong> ที่เราจะใช้บ่อยที่สุด
+                        เพราะถ้าเก็บมากกว่านี้มันเริ่มไม่คุ้มกับเวลาและเงินที่เสียไปแล้ว
+                        ไม่มีกฎตายตัว แต่ 5% เป็นค่าที่คนใช้เยอะที่สุด
+                    </p>
+                    <div class="note-box">
+                        📝 5% ใน ME เราเรียกว่า Arbitrary — เป็นค่าที่ไม่มีกฎตายตัว
+                    </div>
+
+                    <h3 style="font-size: 1.05rem; font-weight: 600; color: var(--text-color); margin: 2rem 0 0.8rem;">
+                        ตัวอย่างจริงจาก Survey Monkey</h3>
+                    <p>สมมติเรามี pop = 10,000 | Confidence level = 95%</p>
+                    <div class="formula-row">
+                        <div class="formula-box">
+                            <strong>ME = 5%</strong>
+                            <div class="arrow">→</div>
+                            <span>sample size = <strong>370 คน</strong></span>
+                        </div>
+                        <div class="formula-box">
+                            <strong>ME = 3%</strong>
+                            <div class="arrow">→</div>
+                            <span>sample size = <strong>965 คน</strong></span>
+                            <div style="font-size: 0.82rem; color: #a05050; margin-top: 0.3rem;">เพิ่มเกือบ 3 เท่าตัว
+                                เพื่อลด ME แค่ 2%</div>
+                        </div>
+                    </div>
+                    <p>อย่าลืมเรื่อง Time + Budget มีเวลาเก็บข้อมูลเยอะไหม และมี budget เท่าไหร่ เวลาทำงานจริงๆ
+                        เราต้องเอาเงินไปลงกับส่วนอื่นด้วย ไม่ว่าจะเป็นค่าโฆษณา ค่า marketing ต่างๆ</p>
+
+                    <hr class="section-divider">
+
+                    <!-- SECTION 6: Key Formulas Summary -->
+                    <h2 class="section-title" style="font-size: 1.4rem;">สรุปความสัมพันธ์ที่ควรจำ</h2>
+
+                    <div class="formula-row">
+                        <div class="formula-box">
+                            <strong>Margin Error ↑</strong>
+                            <div class="arrow">→</div>
+                            <span>Sample size ↓</span>
+                        </div>
+                        <div class="formula-box">
+                            <strong>Margin Error ↓</strong>
+                            <div class="arrow">→</div>
+                            <span>Sample size ↑</span>
+                        </div>
+                        <div class="formula-box">
+                            <strong>Sample size(n) ↑</strong>
+                            <div class="arrow">→</div>
+                            <span>Confidence ↑<br>Margin Error ↓</span>
+                        </div>
+                    </div>
+
+                    <div class="note-box">
+                        📝 Sample size | Confidence interval | Margin Error มีความสัมพันธ์เกี่ยวข้องกันหมดเลย
+                    </div>
 
                     <p
                         style="margin-top: 2rem; border-left: 3px solid var(--secondary-color); padding-left: 1.2rem; color: #5c554b;">
-                        💡 หลักการง่ายๆ: <strong>"A small, well-designed sample beats a large biased one."</strong>
-                        การสุ่มที่ดีคือรากฐานที่แข็งแกร่งของทุก Analysis ครับ
+                        💡 หลักการง่ายๆ: <strong>Garbage in, Garbage out</strong> — ถ้า sample ไม่ดี
+                        ไม่ว่าจะวิเคราะห์เก่งแค่ไหน ผลลัพธ์ก็ไม่มีคุณภาพ
+                        การออกแบบวิธีสุ่มที่ดีตั้งแต่ต้น สำคัญกว่าการเพิ่ม sample size ภายหลังเสมอครับ
                     </p>
 
                 </div>
