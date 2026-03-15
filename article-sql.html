@@ -4,11 +4,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SQL พื้นฐาน | Littletree</title>
+    <title>Intro to SQL | Littletree</title>
     <link rel="stylesheet" href="style.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap"
         rel="stylesheet">
+    <style>
+        .article-img {
+            display: block;
+            max-width: 100%;
+            border-radius: 10px;
+            margin: 1.5rem auto;
+            box-shadow: 0 4px 18px rgba(59, 54, 47, 0.12);
+        }
+
+        .img-caption {
+            text-align: center;
+            color: #888276;
+            font-size: 0.85rem;
+            margin-top: -0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .note-box {
+            background: rgba(123, 136, 111, 0.08);
+            border-left: 3px solid var(--secondary-color);
+            border-radius: 0 8px 8px 0;
+            padding: 0.8rem 1.2rem;
+            margin: 1rem 0 1.5rem;
+            color: #5c554b;
+            font-size: 0.93rem;
+        }
+
+        .tip-box {
+            background: rgba(90, 120, 180, 0.07);
+            border-left: 3px solid #7a9abf;
+            border-radius: 0 8px 8px 0;
+            padding: 0.8rem 1.2rem;
+            margin: 1rem 0 1.5rem;
+            color: #4a5c6b;
+            font-size: 0.93rem;
+        }
+
+        .section-divider {
+            border: none;
+            border-top: 1px solid var(--border-color);
+            margin: 2.5rem 0;
+        }
+
+        pre,
+        code.block {
+            background: #1e1e1e;
+            color: #d4d0c8;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            font-family: 'Fira Mono', 'Courier New', monospace;
+            font-size: 0.85rem;
+            line-height: 1.7;
+            overflow-x: auto;
+            margin: 1rem 0 1.5rem;
+            display: block;
+            white-space: pre;
+        }
+
+        .keyword {
+            color: #569cd6;
+        }
+
+        .fn-name {
+            color: #dcdcaa;
+        }
+
+        .str-val {
+            color: #ce9178;
+        }
+
+        .comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+
+        .num-val {
+            color: #b5cea8;
+        }
+
+        .inline-code {
+            background: rgba(123, 136, 111, 0.12);
+            border-radius: 4px;
+            padding: 0.05rem 0.35rem;
+            font-family: 'Fira Mono', 'Courier New', monospace;
+            font-size: 0.88em;
+            color: #5a5045;
+        }
+
+        .sql-section-heading {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin: 2.2rem 0 0.7rem;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .two-col .note-box,
+        .two-col .tip-box {
+            margin: 0;
+        }
+
+        @media (max-width: 640px) {
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -46,55 +159,729 @@
                 <div class="tags" style="margin-top: 2rem;">
                     <span>SQL</span>
                     <span>Database</span>
+                    <span>SQLite</span>
                 </div>
                 <h1 class="name" style="margin-top: 1rem; font-size: 2.8rem; line-height: 1.2;">Intro to SQL</h1>
-                <p style="margin-top: 1rem; color: #888276; font-size: 0.9rem;">28 กุมภาพันธ์ 2026 · อ่านประมาณ 6 นาที
+                <p style="margin-top: 1rem; color: #888276; font-size: 0.9rem;">28 กุมภาพันธ์ 2026 · อ่านประมาณ 15 นาที
                 </p>
 
                 <div class="project-content" style="margin-top: 3rem;">
 
+                    <!-- ===== WHAT IS SQL ===== -->
                     <h2 class="section-title" style="font-size: 1.4rem;">SQL คืออะไร?</h2>
                     <p>
-                        SQL (Structured Query Language) คือภาษาที่ใช้สื่อสารกับฐานข้อมูลเชิงสัมพันธ์ (Relational
-                        Database)
-                        ไม่ว่าจะเป็น MySQL, PostgreSQL, SQLite หรือ SQL Server ก็ใช้ภาษา SQL เป็นหลักทั้งนั้นครับ
-                        ถ้าคุณทำงานด้าน Data หรือ Backend การรู้จัก SQL ถือเป็น skill ที่จำเป็นมากๆ
+                        SQL (Structure Query Language) เกิดขึ้นตั้งแต่ปี 1970 เป็นภาษาที่เราเอาไปใช้ทำงานกับ Databases
+                        Database จะประกอบไปด้วย Table และในแต่ละ Table จะประกอบไปด้วย rows และ columns
                     </p>
 
-                    <h2 class="section-title" style="font-size: 1.4rem; margin-top: 3rem;">SELECT — ดึงข้อมูล</h2>
-                    <p>คำสั่งพื้นฐานที่สุดคือ SELECT ใช้สำหรับดึงข้อมูลจากตาราง:</p>
+                    <h3 class="sql-section-heading">Data types in SQL</h3>
+                    <p>ประเภทของข้อมูลที่เราจะใช้กันบ่อยๆ มี 4 ประเภทหลักๆ คือ</p>
                     <ul class="feature-list">
-                        <li><strong>SELECT * FROM users;</strong> — ดึงทุกคอลัมน์จากตาราง users</li>
-                        <li><strong>SELECT name, email FROM users;</strong> — ดึงเฉพาะคอลัมน์ที่ต้องการ</li>
-                        <li><strong>SELECT * FROM users WHERE age &gt; 25;</strong> — ดึงเฉพาะแถวที่ตรงเงื่อนไข</li>
-                        <li><strong>SELECT * FROM users ORDER BY name ASC;</strong> — จัดเรียงผลลัพธ์</li>
+                        <li><strong>Integer</strong> — ข้อมูลที่เป็นตัวเลขจำนวนเต็ม</li>
+                        <li><strong>REAL</strong> — หรือ Float number ข้อมูลที่เป็นตัวเลขที่มีทศนิยม</li>
+                        <li><strong>Text</strong> — หรือ String ข้อมูลที่เป็นตัวอักษร</li>
+                        <li><strong>Date</strong> — ข้อมูลประเภทวันที่</li>
+                    </ul>
+                    <div class="note-box">
+                        🗒 Note: SQLite จะมองข้อมูลประเภท Date หรือวันที่ เป็น Text หมดเลย
+                    </div>
+
+                    <hr class="section-divider">
+
+                    <!-- ===== CREATE TABLE / INSERT ===== -->
+                    <h2 class="section-title" style="font-size: 1.4rem;">Simple Query in SQL</h2>
+
+                    <h3 class="sql-section-heading">Create Table</h3>
+                    <p>ใช้ <span class="inline-code">CREATE TABLE</span> ในการสร้าง table ใหม่ขึ้นมา</p>
+                    <pre>-- How to create table
+CREATE TABLE employee (
+  id        INT UNIQUE,
+  name      TEXT,
+  department TEXT,
+  position  TEXT,
+  salary    REAL
+);</pre>
+
+                    <img src="images/sql/page2_img1.png" alt="Structure ของ employee table" class="article-img"
+                        style="max-width: 380px;">
+                    <p class="img-caption">โครงสร้าง table employee ใน SQLite</p>
+
+                    <p>วิธีลบ table ทิ้ง:</p>
+                    <pre>DROP TABLE "table_name";</pre>
+
+                    <!-- Insert data -->
+                    <h3 class="sql-section-heading">Insert Data</h3>
+                    <p>ใช้ <span class="inline-code">INSERT INTO</span> ตามด้วยชื่อ table เพื่อเพิ่มข้อมูลเข้าไปใน table
+                        ที่เราสร้าง</p>
+                    <pre>INSERT INTO employee VALUES
+  (1, 'David', 'IT', 'CEO', 100000),
+  (2, 'John', 'Marketing', 'VP', 85000),
+  (3, 'Marry', 'Sales', 'Manager', 60000);</pre>
+
+                    <img src="images/sql/page3_img1.png" alt="Insert data result" class="article-img"
+                        style="max-width: 500px;">
+
+                    <p>ลอง SELECT ดูว่าข้อมูลที่เราใส่ไปถูกต้องไหม</p>
+                    <pre>SELECT * FROM employee;</pre>
+
+                    <div class="note-box">
+                        🗒 Note: ถ้าตอนสร้าง table เรากำหนดคอลัมน์ id เป็น PRIMARY KEY หรือ UNIQUE เราสามารถรัน INSERT
+                        INTO ได้แค่ครั้งเดียวเท่านั้น
+                    </div>
+
+                    <!-- SELECT data -->
+                    <h3 class="sql-section-heading">SELECT Data</h3>
+                    <p>เราใช้ SELECT เพื่อดึงข้อมูลที่เราต้องการ SELECT จะตามด้วยชื่อคอลัมน์ แล้วจบที่ FROM table
+                        ที่เราดึงข้อมูลมา</p>
+                    <pre>-- Select all data
+SELECT *
+FROM employee;
+
+-- Select เฉพาะคอลัมน์ที่ต้องการ
+SELECT name, department, salary
+FROM employee;</pre>
+
+                    <img src="images/sql/page4_img1.png" alt="SELECT result" class="article-img"
+                        style="max-width: 500px;">
+
+                    <p>ใช้ <span class="inline-code">AS</span> เพื่อเปลี่ยนชื่อคอลัมน์</p>
+                    <pre>SELECT name,
+       salary,
+       salary * 1.5 AS new_salary
+FROM employee;</pre>
+
+                    <img src="images/sql/page4_img2.png" alt="AS alias result" class="article-img"
+                        style="max-width: 500px;">
+
+                    <p>หรือใช้ <span class="inline-code">||</span> เพื่อ concat ตัวอักษรได้</p>
+                    <pre>-- Create employee email
+SELECT
+  name,
+  salary,
+  name || '@company.com' AS email
+FROM employee;</pre>
+
+                    <img src="images/sql/page5_img1.png" alt="Concat result" class="article-img"
+                        style="max-width: 500px;">
+
+                    <p>ใช้ <span class="inline-code">LIMIT</span> เพื่อจำกัดแถวตอน output</p>
+                    <pre>-- Limit 5 rows
+SELECT *
+FROM customer
+LIMIT 5;</pre>
+
+                    <img src="images/sql/page5_img2.png" alt="LIMIT result" class="article-img"
+                        style="max-width: 500px;">
+
+                    <!-- Filter -->
+                    <h3 class="sql-section-heading">Filter Data</h3>
+                    <p>ใช้ <span class="inline-code">WHERE</span> ในการกรองข้อมูลตามเงื่อนไขที่เราต้องการ</p>
+                    <pre>SELECT * FROM employee
+WHERE department = 'Marketing';</pre>
+
+                    <img src="images/sql/page6_img1.png" alt="WHERE filter result" class="article-img"
+                        style="max-width: 500px;">
+
+                    <p>ใช้ <span class="inline-code">AND</span> หรือ <span class="inline-code">OR</span> คู่กับ WHERE
+                        ได้</p>
+                    <pre>SELECT * FROM employee
+WHERE department = 'Marketing' OR department = 'IT' AND salary > 50000;</pre>
+
+                    <img src="images/sql/page6_img2.png" alt="AND OR filter result" class="article-img"
+                        style="max-width: 500px;">
+
+                    <p>หรือใช้ <span class="inline-code">IN</span> operator ทำให้โค้ดสั้นลง</p>
+                    <pre>SELECT * FROM employee
+WHERE department IN ('Marketing', 'IT');</pre>
+
+                    <img src="images/sql/page6_img3.png" alt="IN operator result" class="article-img"
+                        style="max-width: 500px;">
+
+                    <!-- Update -->
+                    <h3 class="sql-section-heading">Update Data</h3>
+                    <pre>-- e.g. อยากเปลี่ยน salary ของ David ให้ใหม่เป็น 99000
+UPDATE employee
+SET salary = 99000
+WHERE id = 1;
+
+-- เช็คดูว่าข้อมูลเปลี่ยนไปยัง
+SELECT * FROM employee;</pre>
+
+                    <img src="images/sql/page7_img1.png" alt="UPDATE result" class="article-img"
+                        style="max-width: 500px;">
+
+                    <!-- Delete -->
+                    <h3 class="sql-section-heading">Delete Data</h3>
+                    <pre>-- e.g. ต้องการลบพนักงาน id 5
+DELETE FROM employee
+WHERE id = 5;
+
+-- เช็คดูว่าพนักงาน id 5 ถูกลบไหม
+SELECT * FROM employee;</pre>
+
+                    <img src="images/sql/page7_img2.png" alt="DELETE result" class="article-img"
+                        style="max-width: 500px;">
+
+                    <!-- Alter table -->
+                    <h3 class="sql-section-heading">Alter Table</h3>
+                    <p>Alter table คือการเปลี่ยนชื่อ table หรือ เพิ่มคอลัมน์ใหม่ให้ table ของเรา</p>
+                    <pre>-- เปลี่ยนชื่อ table ใหม่เป็น MyEmployee
+ALTER TABLE employee RENAME TO MyEmployee;
+
+-- เพิ่มคอลัมน์ email ใน table MyEmployee และใส่ข้อมูลใน email ด้วย
+ALTER TABLE MyEmployee
+ADD email TEXT;
+
+UPDATE MyEmployee
+SET email = 'admin@company.com';
+
+-- เช็คว่า email ถูกต้องไหม
+SELECT * FROM MyEmployee;</pre>
+
+                    <img src="images/sql/page8_img1.png" alt="Alter table result" class="article-img"
+                        style="max-width: 500px;">
+
+                    <pre>-- e.g. ต้องการเปลี่ยน email ของ David เป็น ceo@company.com
+UPDATE MyEmployee
+SET email = 'ceo@company.com'
+WHERE id = 1;
+
+-- เช็คความถูกต้อง
+SELECT * FROM MyEmployee;</pre>
+
+                    <img src="images/sql/page8_img2.png" alt="Update email result" class="article-img"
+                        style="max-width: 500px;">
+
+                    <!-- Copy and Drop -->
+                    <h3 class="sql-section-heading">Copy and Drop Table</h3>
+                    <pre>-- ทำ backup table ของ MyEmployee
+CREATE TABLE MyEmployee_Backup AS
+SELECT * FROM MyEmployee;
+
+SELECT * FROM MyEmployee_Backup;</pre>
+
+                    <img src="images/sql/page9_img1.png" alt="Backup table result" class="article-img"
+                        style="max-width: 500px;">
+
+                    <p>เป็นการเอาข้อมูลใน MyEmployee ไปใส่ใน table ที่สร้างใหม่ (backup นั่นแหละ) คือ MyEmployee_Backup
+                    </p>
+
+                    <h3 class="sql-section-heading">Drop Table</h3>
+                    <p>ใช้ syntax <span class="inline-code">DROP TABLE table_name;</span> เพื่อลบ table ทิ้งไปเลย</p>
+                    <pre>DROP TABLE MyEmployee_Backup;</pre>
+
+                    <div class="note-box">
+                        🗒 Note: ถ้ากดรัน Drop table ไปแล้วมันจะลบไปเลย กู้คืนยากมาก ฉะนั้นเช็คให้ดีก่อนว่ามี Backup
+                        ข้อมูลไว้ไหมก่อนจะ Drop table ทิ้งไป
+                    </div>
+
+                    <img src="images/sql/page9_img2.png" alt="Drop table" class="article-img" style="max-width: 500px;">
+
+                    <hr class="section-divider">
+
+                    <!-- ===== DATABASE & ER DIAGRAM ===== -->
+                    <h2 class="section-title" style="font-size: 1.4rem;">Database and ER Diagram</h2>
+                    <p>
+                        ER Diagram มาจาก Entity-Relationship Diagram เป็นเหมือนแผนผังที่บอกความสัมพันธ์ของ Database
+                        ว่าอะไรเชื่อมโยงกันบ้าง
+                    </p>
+                    <p>รูปแบบความสัมพันธ์ของ database หลักๆ จะมี 3 แบบ คือ</p>
+                    <ul class="feature-list">
+                        <li><strong>One-to-One</strong></li>
+                        <li><strong>One-to-Many</strong> (ใช้บ่อยที่สุด)</li>
+                        <li><strong>Many-to-Many</strong></li>
                     </ul>
 
-                    <h2 class="section-title" style="font-size: 1.4rem; margin-top: 3rem;">JOIN —
-                        เชื่อมข้อมูลจากหลายตาราง</h2>
-                    <p>เมื่อข้อมูลอยู่คนละตาราง เราใช้ JOIN เพื่อรวมข้อมูลเข้าด้วยกัน:</p>
-                    <ul class="feature-list">
-                        <li><strong>INNER JOIN:</strong> ดึงเฉพาะแถวที่มีข้อมูลตรงกันในทั้งสองตาราง</li>
-                        <li><strong>LEFT JOIN:</strong> ดึงแถวทั้งหมดจากตารางซ้าย แม้ไม่มีข้อมูลตรงกันในตารางขวา</li>
-                        <li><strong>RIGHT JOIN:</strong> ดึงแถวทั้งหมดจากตารางขวา</li>
-                        <li><strong>FULL OUTER JOIN:</strong> ดึงทุกแถวจากทั้งสองตาราง</li>
-                    </ul>
+                    <img src="images/sql/page10_img1.png" alt="ER Diagram concept" class="article-img"
+                        style="max-width: 420px;">
 
-                    <h2 class="section-title" style="font-size: 1.4rem; margin-top: 3rem;">Aggregate Functions — สรุปผล
-                    </h2>
-                    <p>ใช้รวมข้อมูลหลายแถวให้เป็นค่าสรุปเดียว มักใช้คู่กับ GROUP BY:</p>
+                    <p>
+                        คอลัมน์ที่มีแม่กุญแจ เราเรียกว่า <strong>Primary Key</strong> ก็คือใน table นั้น Primary key
+                        จะเป็น unique value
+                        ส่วน Primary key ตัวไหนที่ไปโผลในคอลัมน์อื่นก็จะเป็น <strong>Foreign key</strong> เทียบง่ายๆ
+                        ก็เหมือน key ลูก
+                    </p>
+
+                    <img src="images/sql/page11_img1.png" alt="ER Diagram ของ SQLite database" class="article-img"
+                        style="max-width: 100%;">
+                    <p class="img-caption">ER Diagram ของ database ที่ใช้ในการฝึก SQL — แสดงความสัมพันธ์ระหว่าง tables
+                        ทั้งหมด</p>
+
+                    <hr class="section-divider">
+
+                    <!-- ===== ADVANCE SQL ===== -->
+                    <h2 class="section-title" style="font-size: 1.4rem;">Advance SQL Query</h2>
+
+                    <!-- Case When -->
+                    <h3 class="sql-section-heading">CASE WHEN ELSE</h3>
+                    <p>เป็นการ query เงื่อนไขเพื่อสร้างคอลัมน์ใหม่ เทียบกับ spreadsheets ก็เหมือน function <span
+                            class="inline-code">=IFS()</span></p>
+                    <pre>-- e.g. ใช้ CASE WHEN สร้างคอลัมน์ region
+SELECT
+  country,
+  CASE
+    WHEN country IN ('Cananda', 'USA') THEN 'America'
+    WHEN country IN ('Belgium', 'France', 'Italy') THEN 'Europe'
+    ELSE 'Other'
+  END AS region
+FROM customers;</pre>
+
+                    <img src="images/sql/page12_img1.png" alt="CASE WHEN result" class="article-img"
+                        style="max-width: 500px;">
+
+                    <pre>-- e.g. จัด segment คอลัมน์ company
+-- ถ้าแถวไหนไม่ใช่ค่า NULL ให้เป็น 'coperate'
+-- แต่ถ้าเป็นค่า NULL ให้แสดงเป็น 'End Customer'
+SELECT
+  company,
+  CASE
+    WHEN company IS NOT NULL THEN 'Coperate'
+    ELSE 'End Customer'
+  END AS segment
+FROM customers;</pre>
+
+                    <!-- Date and Time -->
+                    <h3 class="sql-section-heading">Working with Date and Time</h3>
+                    <p>
+                        ใน SQLite จะมีฟังก์ชันนึงชื่อ <span class="inline-code">STRFTIME</span> ย่อมาจาก Strif Time
+                        เป็นฟังก์ชันที่เอาไว้เปลี่ยน format date ตามที่เราต้องการ
+                    </p>
+                    <pre>-- Extract date from date value
+SELECT
+  invoicedate,
+  STRFTIME('%Y', invoicedate) AS year,
+  STRFTIME('%m', invoicedate) AS month,
+  STRFTIME('%d', invoicedate) AS day
+FROM invoices;</pre>
+
+                    <img src="images/sql/page13_img1.png" alt="STRFTIME result" class="article-img"
+                        style="max-width: 500px;">
+
+                    <pre>-- Create year-month column
+SELECT
+  invoicedate,
+  STRFTIME('%Y-%m', invoicedate) AS year_month
+FROM invoices;</pre>
+
+                    <img src="images/sql/page14_img1.png" alt="Year-month column result" class="article-img"
+                        style="max-width: 500px;">
+
+                    <pre>-- Only year == 2010
+SELECT
+  invoicedate,
+  STRFTIME('%Y', invoicedate) AS year,
+  STRFTIME('%m', invoicedate) AS month,
+  STRFTIME('%d', invoicedate) AS day
+FROM invoices
+WHERE year = '2010';
+
+-- หรือใช้ฟังก์ชัน CAST() เพื่อเปลี่ยน data type ของคอลัมน์ year
+-- เวลาเรา filter ก็ไม่ต้องใส่ single quote
+SELECT
+  invoicedate,
+  CAST(STRFTIME('%Y', invoicedate) AS INT) AS year
+FROM invoices
+WHERE year = 2010;</pre>
+
+                    <img src="images/sql/page14_img2.png" alt="CAST STRFTIME result" class="article-img"
+                        style="max-width: 500px;">
+                    <img src="images/sql/page15_img1.png" alt="Year filter result" class="article-img"
+                        style="max-width: 500px;">
+
+                    <!-- LIKE -->
+                    <h3 class="sql-section-heading">LIKE — Pattern Matching</h3>
+                    <img src="images/sql/page16_img1.png" alt="LIKE operator" class="article-img"
+                        style="max-width: 500px;">
+
+                    <p>ใช้ <span class="inline-code">LIKE</span> เพื่อค้นหาข้อมูลแบบ pattern matching</p>
                     <ul class="feature-list">
-                        <li><strong>COUNT(*):</strong> นับจำนวนแถว</li>
-                        <li><strong>SUM(column):</strong> รวมค่าในคอลัมน์</li>
-                        <li><strong>AVG(column):</strong> ค่าเฉลี่ย</li>
-                        <li><strong>MAX / MIN:</strong> ค่าสูงสุด / ต่ำสุด</li>
+                        <li><span class="inline-code">%</span> — แทนอักษรกี่ตัวก็ได้ (wildcard)</li>
+                        <li><span class="inline-code">_</span> — แทนอักษรเพียง 1 ตัว</li>
                     </ul>
+                    <pre>-- หาชื่อที่ขึ้นต้นด้วย J
+SELECT * FROM customers
+WHERE firstname LIKE 'J%';
+
+-- หาชื่อที่ตรง pattern 'J_hn' (เช่น John, Jahn)
+SELECT * FROM customers
+WHERE firstname LIKE 'J_hn';</pre>
+
+                    <img src="images/sql/page17_img1.png" alt="LIKE J% result" class="article-img"
+                        style="max-width: 500px;">
+                    <img src="images/sql/page17_img2.png" alt="LIKE J_hn result" class="article-img"
+                        style="max-width: 500px;">
+
+                    <!-- COALESCE -->
+                    <h3 class="sql-section-heading">COALESCE — จัดการค่า NULL</h3>
+                    <p>
+                        <span class="inline-code">COALESCE</span> เป็น function ที่แทนค่า null หรือ missing value ด้วย
+                        value ที่เราต้องการ
+                    </p>
+                    <pre>-- สร้างคอลัมน์ใหม่เพื่อ filter ค่า NULL ของคอลัมน์ company
+SELECT company, COALESCE(company, 'End customer') AS Company_clean
+FROM customers;</pre>
+
+                    <img src="images/sql/page18_img1.png" alt="COALESCE result" class="article-img"
+                        style="max-width: 500px;">
+
+                    <div class="tip-box">
+                        📌 Tip: ถ้าเราอยากให้ชื่อคอลัมน์มี white space เช่น Company Clean ให้เราใช้ single quote
+                        เป็นตัวช่วย <span class="inline-code">'Company Clean'</span>
+                    </div>
+
+                    <pre>-- สร้างคอลัมน์ใหม่เหมือนข้างบนเลย แต่เพิ่มอีกคอลัมน์ที่เช็คเงื่อนไขว่า
+-- ลูกค้าเป็น coperate หรือ End customer
+SELECT
+  company,
+  COALESCE(company, 'End customer'),
+  CASE
+    WHEN company IS NULL THEN 'End customer'
+    ELSE 'Coperate'
+  END AS 'segment'
+FROM customers;</pre>
+
+                    <img src="images/sql/page19_img2.png" alt="COALESCE + CASE result" class="article-img"
+                        style="max-width: 500px;">
+
+                    <hr class="section-divider">
+
+                    <!-- ===== JOIN ===== -->
+                    <h2 class="section-title" style="font-size: 1.4rem;">Join Data</h2>
+
+                    <h3 class="sql-section-heading">Join data using WHERE clause</h3>
+                    <pre>-- e.g. อยากได้ข้อมูลศิลปิน, id ศิลปิน แล้วก็ชื่ออัลบั้ม
+SELECT
+  artists.artistid,
+  artists.name AS artist_name,
+  albums.title AS album_name
+FROM artists, albums
+WHERE artists.artistid = albums.artistid;
+
+-- Only artistid = 10
+SELECT
+  artists.artistid,
+  artists.name AS artist_name,
+  albums.title AS album_name
+FROM artists, albums
+WHERE artists.artistid = albums.artistid
+  AND artists.artistid = 10;
+
+-- นอกจากชื่อศิลปิน, id ศิลปิน, ชื่ออัลบั้มแล้ว อยากรู้ชื่อ track ด้วยและ artist_id = 10
+SELECT
+  artists.artistid,
+  artists.name AS artist_name,
+  albums.title AS album_name,
+  tracks.name AS song_name
+FROM artists, albums, tracks
+WHERE artists.artistid = albums.artistid
+  AND albums.albumid = track.albumid
+  AND artists.artisid = 10;</pre>
+
+                    <img src="images/sql/page20_img1.png" alt="JOIN via WHERE result" class="article-img"
+                        style="max-width: 500px;">
+                    <img src="images/sql/page20_img2.png" alt="JOIN 3 tables result" class="article-img"
+                        style="max-width: 500px;">
+
+                    <hr class="section-divider">
+
+                    <!-- ===== AGGREGATE FUNCTIONS ===== -->
+                    <h2 class="section-title" style="font-size: 1.4rem;">Aggregate Functions</h2>
+
+                    <h3 class="sql-section-heading">Simple Aggregate Functions</h3>
+                    <p>เป็น function ที่เราเอาไว้สรุปผลข้อมูล function ที่เราใช้บ่อยๆ ก็จะมี</p>
+                    <ul class="feature-list">
+                        <li><span class="inline-code">COUNT</span></li>
+                        <li><span class="inline-code">AVG</span></li>
+                        <li><span class="inline-code">SUM</span></li>
+                        <li><span class="inline-code">MIN</span></li>
+                        <li><span class="inline-code">MAX</span></li>
+                    </ul>
+                    <div class="note-box">
+                        📑 Note: Aggregate functions จะไม่สนใจค่า NULL ในคอลัมน์นั้นๆ
+                    </div>
+                    <pre>-- e.g. ต้องการหาค่าเฉลี่ย, ผลรวม, นับจำนวน, หาค่าน้อยสุดและค่ามากสุด
+--      ของคอลัมน์ milliseconds
+SELECT
+  AVG(milliseconds)   AS avg_millisecs,
+  SUM(milliseconds)   AS total_millisecs,
+  COUNT(milliseconds) AS total_tracks,
+  MIN(milliseconds)   AS min_millisecs,
+  MAX(milliseconds)   AS max_millisecs
+FROM tracks;</pre>
+
+                    <div class="note-box">
+                        📑 Note: <span class="inline-code">ROUND()</span> เป็นฟังก์ชันที่เอาไว้ปรับ format จุดทศนิยม
+                    </div>
+
+                    <h3 class="sql-section-heading">COUNT DISTINCT</h3>
+                    <p>หรือการนับ record แบบไม่ซ้ำ</p>
+                    <pre>-- e.g. ในคอลัมน์ country มีทั้งหมดกี่ประเทศ แล้วลูกค้ามีทั้งหมดกี่คน
+SELECT
+  COUNT(DISTINCT country) AS count_country,
+  COUNT(*)                AS count_cus
+FROM customers;</pre>
+
+                    <h3 class="sql-section-heading">GROUP BY</h3>
+                    <p>
+                        โดยปกติแล้วเราจะใช้ GROUP BY คู่กับ aggregate functions
+                        เหมือนเป็นการสรุปข้อมูลตามกลุ่มที่เราต้องการ
+                        เช่น นับจำนวนลูกค้าในแต่ละประเทศ หรือนับจำนวนอัลบั้มของศิลปินแต่ละคน
+                    </p>
+                    <pre>-- ตัวอย่าง GROUP BY query
+SELECT
+  country,
+  COUNT(*)
+FROM customers
+GROUP BY country;</pre>
+
+                    <div class="note-box">
+                        📑 Note: คอลัมน์ที่อยู่ใน GROUP BY ควรจะอยู่ใน SELECT clause ด้วย
+                    </div>
+
+                    <pre>-- e.g. อยากรู้ว่าเพลงแต่ละ genre มีเท่าไหร่
+
+-- ใช้ JOIN ในการ join tables genres และ tracks เข้าด้วยกัน
+SELECT
+  genres.name AS genres,
+  COUNT(*) AS count_songs
+FROM genres
+JOIN tracks ON genres.genreid = tracks.genreid
+GROUP BY genres.name;
+
+-- หรือใช้ WHERE ในการ join ก็ได้เหมือนกัน
+SELECT
+  genres.name AS genres,
+  COUNT(*) AS count_songs
+FROM genres, tracks
+WHERE genres.genreid = tracks.genreid
+GROUP BY genres.name;</pre>
+
+                    <h3 class="sql-section-heading">HAVING Clause</h3>
+                    <p>
+                        HAVING จะเขียนเหมือน WHERE clause เลย แค่มันจะ filter ข้อมูลที่ผานการ GROUP BY มาแล้ว
+                        เป็นการกรองกลุ่มที่เราต้องการอีกที
+                    </p>
+                    <div class="note-box">
+                        📑 Note: HAVING จะทำงานหลังจาก GROUP BY
+                    </div>
+                    <pre>-- e.g. จาก query ที่เรานับจำนวนเพลงแต่ละ genre
+--      ทีนี้เราอยากได้แค่ genre ที่มีเพลงมากกว่า 100 เพลงเท่านั้น
+SELECT
+  genres.name,
+  COUNT(*) AS count_songs
+FROM genres
+JOIN tracks ON genres.genreid = tracks.genreid
+GROUP BY genres.name
+HAVING COUNT(*) > 100
+ORDER BY COUNT(*) DESC;
+
+-- e.g. ไม่เอา genre ที่เป็นเพลงร็อค ที่เหลือยังนับเหมือนเดิม
+SELECT
+  genres.name,
+  COUNT(*) AS count_songs
+FROM genres
+JOIN tracks ON genres.genreid = tracks.genreid
+WHERE genre.name <> 'Rock'
+GROUP BY genres.name
+HAVING COUNT(*) > 100
+ORDER BY COUNT(*) DESC;</pre>
+
+                    <div class="tip-box">
+                        📌 Tip: <span class="inline-code">&lt;&gt;</span> เขียนแทน ไม่เท่ากับ (≠)
+                    </div>
+
+                    <h3 class="sql-section-heading">ORDER BY</h3>
+                    <p>
+                        ใช้ในการ sort data จากน้อยไปมากหรือจากมากไปน้อย โดย default แล้ว ORDER BY จะเรียงจากน้อยไปมาก
+                        (Ascending order)
+                        ถ้าเราอยากเรียงจากมากไปน้อยให้ใส่ keyword <span class="inline-code">DESC</span> ซึ่งย่อมาจาก
+                        Descending order นั่นแหละ
+                    </p>
+                    <pre>-- e.g. ต้องการข้อมูลลูกค้าโดยเรียงตามประเทศจากตัวอักษร Z ไปหา A
+SELECT *
+FROM customers
+ORDER BY country DESC;
+
+-- e.g. Count genres and order it in descending order limit 5 records
+SELECT
+  genres.name,
+  COUNT(*) AS count_values
+FROM genres
+JOIN tracks ON genres.genreid = tracks.genreid
+GROUP BY genres.name
+ORDER BY COUNT(*) DESC
+LIMIT 5;</pre>
+
+                    <hr class="section-divider">
+
+                    <!-- ===== CROSS JOIN / SELF JOIN / INTERSECT / EXCEPT / UNION ===== -->
+                    <h2 class="section-title" style="font-size: 1.4rem;">Advanced Join & Set Operations</h2>
+
+                    <h3 class="sql-section-heading">Cross Join (Cartesian)</h3>
+                    <p>
+                        ตัวอย่างการเขียน cross join ที่เห็นภาพสุดคือการจัดชุดไพ่ เราจะมี A K Q J ตามด้วยเลข 2–10 เก็บไว้
+                        table นึง
+                        แล้วก็มีอีก table ที่เก็บข้อมูล โพแดง, โพดำ, ข้าวหลามตัด และดอกจิก เราก็จะใช้ cross join
+                        เพื่อเชื่อม 2 tables เข้าด้วยกัน
+                    </p>
+                    <pre>-- create table Rank and insert data
+CREATE TABLE ranks (rank TEXT);
+INSERT INTO ranks
+VALUES ('2'), ('3'), ('4'), ('5'), ('6'), ('7'), ('8'),
+       ('9'), ('10'), ('J'), ('Q'), ('K'), ('A');
+
+-- create table suit and insert data
+CREATE TABLE suits (suits TEXT);
+INSERT INTO suits
+VALUES ('Clubs'), ('Diamonds'), ('Hearts'), ('Spades');
+
+-- การเขียน cross join ไม่ต้องมีเงื่อนไขอะไรเลย
+-- เติมอีก table นึงลง FROM ได้เลย
+
+-- cross join table suits และ ranks เข้าด้วยกัน
+SELECT *
+FROM ranks, suits
+ORDER BY suit;
+
+-- Or write CROSS JOIN in query
+SELECT *
+FROM ranks CROSS JOIN suits
+ORDER BY suit;</pre>
+
+                    <img src="images/sql/page28_img1.png" alt="Cross join result" class="article-img"
+                        style="max-width: 560px;">
+                    <p class="img-caption">ผลจาก Cross join — ทุกรู้ค่าของ rank จับคู่กับทุกค่าของ suit</p>
+
+                    <h3 class="sql-section-heading">SELF Join</h3>
+                    <p>
+                        เป็นการ join กับ table ตัวเอง use-case ส่วนใหญ่จะใช้กับ table employee เช่น
+                        คนนี้เป็นหัวหน้าคนนี้ แล้วคนนี้เป็นหัวหน้าของอีกคนนึง
+                    </p>
+                    <pre>-- Simple self join
+SELECT *
+FROM employee AS e1, employee AS e2
+WHERE e1.manager_id = e2.id;</pre>
+
+                    <div class="note-box">
+                        🗒 Note: การ SELF JOIN อย่าลืมตั้งชื่อให้ table ด้วย กันความสับสนเวลา query
+                    </div>
+                    <pre>-- e.g. ดึงชื่อพนักงานและตำแหน่งและหัวหน้าของแต่ละคน
+SELECT
+  e1.name  AS staff,
+  e1.level AS staff_level,
+  e2.name  AS manager,
+  e2.level AS manager_level,
+  e1.name  || ' reports to ' || e2.name AS comment
+FROM employee AS e1, employee AS e2
+WHERE e1.manager_id = e2.id;</pre>
+
+                    <!-- INTERSECT and EXCEPT -->
+                    <h3 class="sql-section-heading">INTERSECT and EXCEPT</h3>
+                    <ul class="feature-list">
+                        <li><strong>INTERSECT</strong> — คืนค่าที่มีอยู่ทั้ง 2 tables</li>
+                        <li><strong>EXCEPT</strong> — จะคืนค่าแค่ values ที่มีอยู่แค่ตารางแรก ไม่เอาที่ซ้ำกับตารางที่ 2
+                        </li>
+                    </ul>
+                    <pre>-- e.g. อยากรู้ว่า value ไหนบ้างใน table book_shop ที่ซ้ำกับ table favorite_book
+-- intersect
+SELECT id FROM book_shop
+INTERSECT
+SELECT id FROM favorite_book;
+
+-- e.g. อยากรู้ว่าไอดีหนังสือเล่มไหนอยู่ใน book_shop แต่ไม่อยู่ใน favorite_book บ้าง
+-- except
+SELECT id FROM book_shop
+EXCEPT
+SELECT id FROM favorite_book;</pre>
+
+                    <!-- UNION -->
+                    <h3 class="sql-section-heading">UNION</h3>
+                    <p>เหมือนเป็นการ append table เข้าด้วยกัน</p>
+                    <ul class="feature-list">
+                        <li><strong>UNION</strong> — จะไม่เก็บข้อมูลที่มันซ้ำกัน (duplicate)</li>
+                        <li><strong>UNION ALL</strong> — จะเก็บทุกค่าไว้ ไม่สนว่าจะซ้ำหรือไม่</li>
+                    </ul>
+                    <pre>-- Union
+SELECT * FROM table1
+UNION
+SELECT * FROM table2;
+
+-- Union all
+SELECT * FROM table1
+UNION ALL
+SELECT * FROM table2;</pre>
+
+                    <img src="images/sql/page31_img1.png" alt="UNION result" class="article-img"
+                        style="max-width: 560px;">
+
+                    <hr class="section-divider">
+
+                    <!-- ===== SUBQUERIES ===== -->
+                    <h2 class="section-title" style="font-size: 1.4rem;">Subqueries</h2>
+                    <p>เป็นการเขียน nested query</p>
+                    <ul class="feature-list">
+                        <li>SELECT ที่อยู่นอกวงเล็บจะเป็น <strong>outer query</strong></li>
+                        <li>SELECT ที่อยู่ในวงเล็บจะเป็น <strong>inner query</strong></li>
+                    </ul>
+                    <div class="note-box">
+                        🗒 Note: SQL จะรัน query ที่อยู่ในวงเล็บก่อน (Inner query first) แล้วค่อยๆ
+                        รันชั้นนอกออกมาเรื่อยๆ
+                    </div>
+                    <pre>-- e.g. อยากรู้ว่าเพลงไหนความยาวยาวที่สุดโดยใช้ subquery
+SELECT *
+FROM tracks
+WHERE milliseconds = (SELECT MAX(milliseconds) FROM tracks);
+
+-- (SELECT MAX(milliseconds) FROM tracks) เรียกว่า Inner query
+-- SELECT * FROM tracks WHERE milliseconds = เรียกว่า Outer query
+
+-- e.g. เราอยากได้ข้อมูลลูกค้าที่อยู่ USA
+SELECT
+  firstname, lastname, country
+FROM (SELECT * FROM customers WHERE country = 'USA');</pre>
+
+                    <img src="images/sql/page32_img1.png" alt="Subquery result" class="article-img"
+                        style="max-width: 560px;">
+
+                    <hr class="section-divider">
+
+                    <!-- ===== COMMON SQL ERRORS ===== -->
+                    <h2 class="section-title" style="font-size: 1.4rem;">Common SQL Errors</h2>
+                    <p>Error ที่เจอบ่อยๆ และวิธีแก้:</p>
+
+                    <div class="note-box"
+                        style="background: rgba(180,80,80,0.06); border-color: #c08080; color: #7a3a3a;">
+                        ❌ <strong>Table xxx already exists</strong>
+                        <br>ถ้าขึ้นแบบนี้ลองเช็คดูว่า database เรามีชื่อ table นั้นอยู่แล้วหรือเปล่า
+                    </div>
+                    <div class="note-box"
+                        style="background: rgba(180,80,80,0.06); border-color: #c08080; color: #7a3a3a;">
+                        ❌ <strong>UNIQUE constraint failed: table.name</strong>
+                        <br>ถ้าตอนสร้าง table เรากำหนดบางคอลัมน์เป็น UNIQUE หรือ PRIMARY KEY เราไม่สามารถ insert
+                        ข้อมูลซ้ำลงในตารางได้
+                        ให้เราลอง SELECT ข้อมูลดูก่อนว่ามีข้อมูลที่เหมือนกับที่เราจะ insert ไปแล้วหรือยัง
+                    </div>
+                    <div class="note-box"
+                        style="background: rgba(180,80,80,0.06); border-color: #c08080; color: #7a3a3a;">
+                        ❌ <strong>No such table: emp</strong>
+                        <br>เกิดจากที่เราพิมพ์ชื่อ table ผิด
+                    </div>
+                    <div class="note-box"
+                        style="background: rgba(180,80,80,0.06); border-color: #c08080; color: #7a3a3a;">
+                        ❌ <strong>near "FROM" : syntax errors</strong>
+                        <br>มีการเขียน syntax ผิดใกล้ๆ กับ FROM ส่วนใหญ่จะเกิดจากการที่เราเพิ่ม comma เกินมา ทำให้ error
+                        นี้ดัง
+                    </div>
+
+                    <img src="images/sql/page34_img1.png" alt="SQL Summary" class="article-img"
+                        style="max-width: 500px;">
 
                     <p
                         style="margin-top: 2rem; border-left: 3px solid var(--secondary-color); padding-left: 1.2rem; color: #5c554b;">
-                        ลองฝึกเขียน SQL ด้วยเครื่องมือออนไลน์อย่าง <strong>SQLiteOnline.com</strong> หรือลง PostgreSQL
-                        บนเครื่องตัวเองเพื่อเรียนรู้แบบ hands-on ได้เลยครับ
+                        💡 ลองฝึกเขียน SQL ด้วยเครื่องมือออนไลน์อย่าง <strong>SQLiteOnline.com</strong> หรือลง DB
+                        Browser for SQLite บนเครื่องตัวเองเพื่อเรียนรู้แบบ hands-on ได้เลยครับ
                     </p>
+
                 </div>
             </div>
         </section>
